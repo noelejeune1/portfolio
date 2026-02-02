@@ -1,0 +1,30 @@
+.anchor {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 500;
+  border-radius: 4px;
+  position: relative;
+}
+
+.anchor:hover {
+  color: #ffffff;
+}
+
+.button a::before {
+  position: absolute;
+  z-index: 0;
+  background-color: #323232;
+  
+}
+
+.button a:hover::before {
+  height: 11%;
+}
+
+.button span {
+  position: relative;
+  z-index: 2;
+  transition: all .3s ease;
+} 

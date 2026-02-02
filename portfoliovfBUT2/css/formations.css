@@ -1,0 +1,360 @@
+/* =========================================
+   FORMATIONS SECTION - HORIZONTAL TIMELINE SLIDER
+   ========================================= */
+
+.formations-section {
+    margin: 6rem 0;
+    padding: 4rem 0;
+}
+
+.formations-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+    background: var(--gradient-cosmic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.formations-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1rem;
+}
+
+/* Timeline Slider Control */
+.timeline-slider-control {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.slider-wrapper {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Range Input - Hidden but functional */
+.timeline-range {
+    width: 100%;
+    height: 4px;
+    position: relative;
+    z-index: 10;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Track styling */
+.timeline-range::-webkit-slider-track {
+    height: 4px;
+    background: transparent;
+}
+
+.timeline-range::-moz-range-track {
+    height: 4px;
+    background: transparent;
+}
+
+/* Thumb (draggable point) styling */
+.timeline-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--cosmic-blue);
+    cursor: grab;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2),
+        0 4px 12px rgba(96, 165, 250, 0.4);
+    transition: var(--transition);
+}
+
+.timeline-range::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--cosmic-blue);
+    border: none;
+    cursor: grab;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2),
+        0 4px 12px rgba(96, 165, 250, 0.4);
+    transition: var(--transition);
+}
+
+.timeline-range:active::-webkit-slider-thumb {
+    cursor: grabbing;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.3),
+        0 6px 16px rgba(96, 165, 250, 0.5);
+}
+
+.timeline-range:active::-moz-range-thumb {
+    cursor: grabbing;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.3),
+        0 6px 16px rgba(96, 165, 250, 0.5);
+}
+
+/* Custom slider track */
+.slider-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--card-border);
+    border-radius: 2px;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.slider-progress {
+    height: 100%;
+    background: var(--gradient-cosmic);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Year markers - Hidden */
+.year-markers {
+    display: none;
+}
+
+.year-marker {
+    display: none;
+}
+
+.marker-dot {
+    display: none;
+}
+
+.marker-label {
+    display: none;
+}
+
+/* Timeline Slider Wrapper with Fade Effects */
+.timeline-slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+}
+
+.timeline-slider {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 10%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Year Groups - All positioned absolutely, centered */
+.timeline-year-group {
+    position: absolute;
+    width: 80%;
+    max-width: 900px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.timeline-year-group.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.year-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.year-header h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-cosmic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.04em;
+}
+
+.year-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Timeline Items Horizontal Layout */
+.timeline-items-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.timeline-item-horizontal {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInHorizontal 0.6s ease forwards;
+}
+
+.timeline-year-group.active .timeline-item-horizontal:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.timeline-year-group.active .timeline-item-horizontal:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.timeline-year-group.active .timeline-item-horizontal:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideInHorizontal {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Formation Cards - Horizontal Compact Style */
+.formation-card-horizontal {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition), var(--transition-theme);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.formation-card-horizontal:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--cosmic-blue);
+}
+
+.formation-icon-small {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    background: var(--gradient-cosmic);
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition);
+}
+
+.formation-card-horizontal:hover .formation-icon-small {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.formation-details-compact {
+    flex: 1;
+}
+
+.formation-details-compact h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    transition: var(--transition-theme);
+}
+
+.formation-location-small {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    transition: var(--transition-theme);
+}
+
+.formation-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cosmic-blue);
+    background: rgba(99, 255, 82, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-nav {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .timeline-years {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .year-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    .timeline-year-group {
+        min-width: 100%;
+    }
+
+    .timeline-slider {
+        padding: 2rem 5%;
+    }
+
+    .year-header h3 {
+        font-size: 2.5rem;
+    }
+
+    .formation-card-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .formation-icon-small {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formations-section {
+        margin: 4rem 0;
+        padding: 2rem 0;
+    }
+
+    .timeline-nav-btn {
+        display: none;
+    }
+}

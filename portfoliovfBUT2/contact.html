@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Noé Le Jeune</title>
+    <meta name="description"
+        content="Contactez Noé Le Jeune - Étudiant BUT MMI pour vos projets de communication et design digital">
+    <link rel="icon" type="image/png" href="./img/moodboard/pdp_design.PNG">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="./css/notification.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="ambient-light"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+
+    <header id="main-header">
+        <div class="header-left">
+            <span>Noé Le Jeune</span>
+            <span class="sub">© BUT 2ème année MMI Lannion</span>
+        </div>
+        <nav class="nav-pill">
+            <button class="nav-btn active" onclick="window.location.href='index.html'">Retour</button>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <section class="contact-section fade-in">
+            <div class="contact-hero">
+                <h1>Travaillons ensemble</h1>
+                <p>Vous avez un projet en tête ? Je serais ravi d'en discuter avec vous.</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID"
+                        method="POST">
+                        <h2>Envoyez-moi un message</h2>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required
+                                placeholder="Sujet de votre message">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required
+                                placeholder="Décrivez votre projet ou votre demande..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Envoyer le message
+                            <span class="arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/contact-form.js"></script>
+</body>
+
+</html>

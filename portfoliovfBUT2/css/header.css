@@ -1,0 +1,217 @@
+/* =========================================
+   HEADER & NAVIGATION - SPACE THEME
+   ========================================= */
+header {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    height: 65px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem 0 2rem;
+    gap: 1rem;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition), var(--transition-theme);
+}
+
+header.scrolled {
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-lg);
+    height: 60px;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-left span {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    transition: var(--transition-theme);
+}
+
+.header-left .sub {
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 0;
+    transition: var(--transition-theme);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--hover-overlay);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    padding: 0;
+}
+
+.theme-toggle-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--cosmic-blue);
+}
+
+.theme-toggle-btn:hover {
+    background: var(--cosmic-blue);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+.theme-toggle-btn:hover svg {
+    color: white;
+}
+
+/* Language Toggle Button */
+.lang-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--hover-overlay);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    padding: 0;
+    font-weight: 700;
+    font-size: 0.7rem;
+    position: relative;
+}
+
+.lang-flag {
+    color: var(--cosmic-purple);
+    transition: var(--transition);
+}
+
+.lang-toggle-btn:hover {
+    background: var(--cosmic-purple);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+.lang-toggle-btn:hover .lang-flag {
+    color: white;
+}
+
+.nav-pill {
+    background: var(--hover-overlay);
+    padding: 4px;
+    border-radius: 30px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    transition: var(--transition-theme);
+}
+
+.nav-btn {
+    border: none;
+    background: none;
+    padding: 10px 24px;
+    border-radius: 26px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    position: relative;
+    z-index: 1;
+    color: var(--text-secondary);
+}
+
+.nav-btn.active {
+    color: white;
+}
+
+.nav-pill::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: var(--gradient-cosmic);
+    border-radius: 26px;
+    transition: var(--transition);
+    z-index: 0;
+    box-shadow: var(--shadow-glow);
+}
+
+.nav-pill.about-active::before {
+    transform: translateX(100%);
+}
+
+/* Handle single button in nav-pill (for contact page) */
+.nav-pill:has(.nav-btn:only-child)::before {
+    width: calc(100% - 8px);
+}
+
+.nav-btn:not(.active):hover {
+    color: var(--cosmic-blue);
+}
+
+.header-right a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: var(--gradient-cosmic);
+    color: white;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-right a:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        width: 95%;
+        padding: 0 1rem 0 1.5rem;
+        height: 60px;
+    }
+
+    .header-left .sub {
+        display: none;
+    }
+
+    .nav-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .header-right a {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}

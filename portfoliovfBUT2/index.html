@@ -1,0 +1,603 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Noé Le Jeune | Étudiant BUT 2ème année MMI </title>
+    <meta name="description"
+        content="Portfolio de Noé Le Jeune - Étudiant en BUT MMI spécialisé en Community Management et Design Digital">
+    <link rel="icon" type="image/png" href="./img/moodboard/pdp_design.PNG">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/preloader.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/filtre.css">
+    <link rel="stylesheet" href="./css/projects.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/skills.css">
+    <link rel="stylesheet" href="./css/formations.css">
+    <link rel="stylesheet" href="./css/moodboard.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">NLJ</div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement...</div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ambient-light"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+
+    <header id="main-header">
+        <div class="header-left">
+            <span data-i18n="header.name">Noé Le Jeune</span>
+            <span class="sub" data-i18n="header.subtitle">© BUT 2ème année MMI Lannion</span>
+        </div>
+        <nav class="nav-pill">
+            <button class="nav-btn active" onclick="switchPage('home')" data-i18n="header.projects">Projet</button>
+            <button class="nav-btn" onclick="switchPage('about')" data-i18n="header.about">À propos</button>
+        </nav>
+        <div class="header-right">
+            <a href="./img/cv_noelejeune.pdf" target="_blank" data-i18n="header.cv">CV</a>
+        </div>
+    </header>
+
+    <main class="page-container" id="main-container">
+
+        <section id="home" class="page-section active fade-in">
+            <div class="hero">
+                <h1 data-i18n="hero.title">Étudiant Community Manager</h1>
+                <p data-i18n="hero.subtitle">Découvrez toutes mes réalisations universitaires et personnelles</p>
+            </div>
+
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all" data-i18n="filter.all">Tout voir</button>
+                <button class="filter-btn" data-filter="audiovisuel" data-i18n="filter.audiovisuel">Audiovisuel</button>
+                <button class="filter-btn" data-filter="communication"
+                    data-i18n="filter.communication">Communication</button>
+                <button class="filter-btn" data-filter="ux_ui" data-i18n="filter.ux_ui">UX / UI</button>
+                <button class="filter-btn" data-filter="marketing" data-i18n="filter.marketing">Marketing</button>
+                <button class="filter-btn" data-filter="dev_web" data-i18n="filter.dev_web">Dév Web</button>
+                <button class="filter-btn" data-filter="graphisme" data-i18n="filter.graphisme">Prod.
+                    Graphique</button>
+                <button class="filter-btn" data-filter="gestion" data-i18n="filter.gestion">Gestion de
+                    projet</button>
+                <button class="filter-btn" data-filter="ecriture" data-i18n="filter.ecriture">Écriture MM</button>
+                <button class="filter-btn" data-filter="3d" data-i18n="filter.3d">3D</button>
+                <button class="filter-btn" data-filter="perso" data-i18n="filter.perso">Personnel</button>
+                <button class="filter-btn" data-filter="motion_design" data-i18n="filter.motion_design">Motion
+                    Design</button>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card" data-categories="communication graphisme" onclick="openModal('infographie')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/infographie1.png" alt="Infographie">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Infographie - Fête de la Science</h3>
+                        <p>Illustration ludique de l'impact de l'IA</p>
+                        <div class="card-tags"><span>Com</span> • <span>Graphisme</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="ux_ui dev_web gestion" onclick="openModal('app_fitness')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/locfit2.png" alt="LocFit">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>LocFit - SAE 301</h3>
+                        <p>Plate-forme de location de sport</p>
+                        <div class="card-tags"><span>UX/UI</span> • <span>Dev</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="dev_web ux_ui" onclick="openModal('deh_watch')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/dehwatch.jpg" alt="Web Design">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Boutique Prestashop</h3>
+                        <p>Horlogerie durable et élégante</p>
+                        <div class="card-tags"><span>Dev</span> • <span>UX/UI</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="communication graphisme" onclick="openModal('voeux_2026')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/carte2026_calc1.jpg" alt="Voeux 2026">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Voeux 2026</h3>
+                        <p>Création graphique pour la nouvelle année</p>
+                        <div class="card-tags"><span>Com</span> • <span>Graphisme</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="ux_ui communication marketing"
+                    onclick="openModal('bretagne_pass')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/Figma-Logo.png" alt="Bretagne Pass">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Bretagne Pass</h3>
+                        <p>Application salles de spectacles Trégor</p>
+                        <div class="card-tags"><span>UX/UI</span> • <span>Com</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="graphisme perso communication"
+                    onclick="openModal('affiche_neymar')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/neymar_affiche_opt.jpg" alt="Neymar Project">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Affiche Neymar JR</h3>
+                        <p>Récapitulatif ère FC Barcelone</p>
+                        <div class="card-tags"><span>Graphisme</span> • <span>Perso</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="audiovisuel" onclick="openModal('sae_104')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/SAE104.jpg" alt="SAE 104">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Court Métrage - SAE 104</h3>
+                        <p>Création de contenu audiovisuel</p>
+                        <div class="card-tags"><span>Audiovisuel</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="3d" onclick="openModal('rendu_3d')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/noelejeune-controle.jpg" alt="Projet 3D">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Modélisation 3D</h3>
+                        <p>Environnement 3D immersif</p>
+                        <div class="card-tags"><span>3D</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="ecriture communication" onclick="openModal('crous_2050')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/Crous.png" alt="Webmagazine">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Crous 2050</h3>
+                        <p>Webmagazine sur le RU du futur</p>
+                        <div class="card-tags"><span>Écriture</span> • <span>Com</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="graphisme perso communication"
+                    onclick="openModal('affiche_leclerc')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/leclerc1_opt.jpg" alt="Charles Leclerc">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Affiche Charles Leclerc</h3>
+                        <p>Synthèse des performances de la carrière de Charles Lerclerc pour le gp de Belgique 2025</p>
+                        <div class="card-tags"><span>Graphisme</span> • <span>Perso</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-categories="motion_design" onclick="openModal('motion_design')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/motion-design.png" alt="Motion Design Project">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Projet Motion Design</h3>
+                        <p>Animation créative de 10s</p>
+                        <div class="card-tags"><span>Motion Design</span> • <span>Perso</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <div class="profile-section">
+                <div class="profile-img-wrapper">
+                    <img loading="lazy" src="./img/projet/pdp.png" alt="Noé Le Jeune" class="profile-img">
+
+                    <!-- Creative tools icons -->
+                    <a class="creative-tool tool-instagram" href="https://www.instagram.com/noe__design" target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="./img/skills/Instagram_icon.png" alt="Instagram">
+                    </a>
+                    <div class="creative-tool tool-tiktok">
+                        <img src="./img/skills/51lpm9SpsJL.png" alt="TikTok">
+                    </div>
+                    <div class="creative-tool tool-music">
+                        <img src="./img/skills/Icône_Music_(Apple)_2025.png" alt="Apple Music">
+                    </div>
+                </div>
+
+                <div class="profile-txt">
+                    <h1 class="about-title">À propos</h1>
+                    <h2 data-i18n="about.name">Noé Le Jeune</h2>
+                    <p data-i18n="about.p1">
+                        Passionné par le sport et l'univers digital, je transforme ma créativité dans des projets
+                        concrets, qui permettent de mettre en évidence mes compétences. Actuellement en formation BUT
+                        Métiers du Multimédia et de l'Internet (MMI), je développe une polyvalence technique et créative
+                        dans plusieurs domaines importants.
+                    </p>
+                    <p data-i18n="about.p2">
+                        J'ai acquis des compétences clés, en communication et en création numérique, qui nourrissent
+                        aujourd'hui mes principaux projets, qu'ils soient personnels ou universitaires.
+                    </p>
+                    <p data-i18n="about.p3">
+                        Cette formation a affiné mon esprit critique : je le nourris aujourd'hui par une veille
+                        constante pour créer des visuels impactants. Mon objectif est simple : proposer une créativité
+                        jeune et originale, qui reflète ma vision tout en répondant précisément à des besoins clairs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="skills-container">
+                <div class="section-title">
+                    <h2>Mes Compétences</h2>
+                </div>
+
+                <div class="skills-carousel-wrapper">
+                    <div class="skills-carousel">
+                        <div class="skills-track">
+                            <!-- First set of skills -->
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Adobe_Photoshop_CC_icon.svg.png" alt="Photoshop"
+                                    class="skill-icon">
+                                <span class="skill-name">Photoshop</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy"
+                                    src="./img/skills/afinity-studio-icon-sucks-v0-rvsmmdtuy41g1.png.webp"
+                                    alt="Affinity" class="skill-icon">
+                                <span class="skill-name">Affinity</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Adobe_Illustrator_CC_icon.svg.png"
+                                    alt="Illustrator" class="skill-icon">
+                                <span class="skill-name">Illustrator</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Adobe_Premiere_Pro_CC_icon.svg.png"
+                                    alt="Premiere Pro" class="skill-icon">
+                                <span class="skill-name">Premiere Pro</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/DaVinci_Resolve_Studio.png" alt="DaVinci Resolve"
+                                    class="skill-icon">
+                                <span class="skill-name">DaVinci</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/vscode.png" alt="VS Code" class="skill-icon">
+                                <span class="skill-name">VS Code</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Blender_logo_no_text.svg.png" alt="Blender"
+                                    class="skill-icon">
+                                <span class="skill-name">Blender</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/figma.png" alt="Figma" class="skill-icon">
+                                <span class="skill-name">Figma</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/wordpress.png" alt="WordPress" class="skill-icon">
+                                <span class="skill-name">WordPress</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/prestashop.png" alt="Prestashop"
+                                    class="skill-icon">
+                                <span class="skill-name">PrestaShop</span>
+                            </div>
+
+                            <!-- Duplicate set for infinite scroll -->
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Adobe_Photoshop_CC_icon.svg.png" alt="Photoshop"
+                                    class="skill-icon">
+                                <span class="skill-name">Photoshop</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy"
+                                    src="./img/skills/afinity-studio-icon-sucks-v0-rvsmmdtuy41g1.png.webp"
+                                    alt="Affinity" class="skill-icon">
+                                <span class="skill-name">Affinity</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Adobe_Illustrator_CC_icon.svg.png"
+                                    alt="Illustrator" class="skill-icon">
+                                <span class="skill-name">Illustrator</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Adobe_Premiere_Pro_CC_icon.svg.png"
+                                    alt="Premiere Pro" class="skill-icon">
+                                <span class="skill-name">Premiere Pro</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/DaVinci_Resolve_Studio.png" alt="DaVinci Resolve"
+                                    class="skill-icon">
+                                <span class="skill-name">DaVinci</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/vscode.png" alt="VS Code" class="skill-icon">
+                                <span class="skill-name">VS Code</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/Blender_logo_no_text.svg.png" alt="Blender"
+                                    class="skill-icon">
+                                <span class="skill-name">Blender</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/figma.png" alt="Figma" class="skill-icon">
+                                <span class="skill-name">Figma</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/wordpress.png" alt="WordPress" class="skill-icon">
+                                <span class="skill-name">WordPress</span>
+                            </div>
+
+                            <div class="skill-card">
+                                <img loading="lazy" src="./img/skills/prestashop.png" alt="Prestashop"
+                                    class="skill-icon">
+                                <span class="skill-name">PrestaShop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formations-section">
+                <h2>Mon parcours</h2>
+                <p class="formations-subtitle">Formations et certifications</p>
+
+                <!-- Timeline Slider Control -->
+                <div class="timeline-slider-control">
+                    <div class="slider-wrapper">
+                        <input type="range" id="timeline-range" class="timeline-range" min="0" max="2" value="1"
+                            step="1">
+                        <div class="slider-track">
+                            <div class="slider-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Slider Container -->
+                <div class="timeline-slider-wrapper">
+                    <div class="timeline-slider">
+                        <!-- Année 2027 -->
+                        <div class="timeline-year-group" data-year="2027">
+                            <div class="year-header">
+                                <h3>2027</h3>
+                                <p>En cours</p>
+                            </div>
+                            <div class="timeline-items-horizontal">
+                                <div class="timeline-item-horizontal">
+                                    <div class="formation-card-horizontal">
+                                        <div class="formation-icon-small">🎓</div>
+                                        <div class="formation-details-compact">
+                                            <h4>BUT MMI (3ème année)</h4>
+                                            <p class="formation-location-small">IUT de Lannion</p>
+                                            <span class="formation-badge">En cours</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Année 2024 -->
+                        <div class="timeline-year-group active" data-year="2024">
+                            <div class="year-header">
+                                <h3>2024</h3>
+                                <p>Formation supérieure</p>
+                            </div>
+                            <div class="timeline-items-horizontal">
+                                <div class="timeline-item-horizontal">
+                                    <div class="formation-card-horizontal">
+                                        <div class="formation-icon-small">🎓</div>
+                                        <div class="formation-details-compact">
+                                            <h4>BUT MMI (métier du multimédia et de l'internet)</h4>
+                                            <p class="formation-location-small">IUT de Lannion (22)</p>
+                                            <span class="formation-badge">2024-2027</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item-horizontal">
+                                    <div class="formation-card-horizontal">
+                                        <div class="formation-icon-small">📚</div>
+                                        <div class="formation-details-compact">
+                                            <h4>BAC STMG, spécialité marketing</h4>
+                                            <p class="formation-location-small">Lycée Saint Joseph Bossuet à Lannion
+                                            </p>
+                                            <span class="formation-badge">Obtenu</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Année 2023 -->
+                        <div class="timeline-year-group" data-year="2023">
+                            <div class="year-header">
+                                <h3>2023</h3>
+                                <p>Certifications</p>
+                            </div>
+                            <div class="timeline-items-horizontal">
+                                <div class="timeline-item-horizontal">
+                                    <div class="formation-card-horizontal">
+                                        <div class="formation-icon-small">⚽</div>
+                                        <div class="formation-details-compact">
+                                            <h4>Formation éducateur (CFI)</h4>
+                                            <p class="formation-location-small">Catégorie U6-U9 football à
+                                                Ploufragan</p>
+                                            <span class="formation-badge">Certifié</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item-horizontal">
+                                    <div class="formation-card-horizontal">
+                                        <div class="formation-icon-small">⛑️</div>
+                                        <div class="formation-details-compact">
+                                            <h4>PSC1 (Prévention et Secours Civiques niveau 1)</h4>
+                                            <p class="formation-location-small">Formation aux premiers secours</p>
+                                            <span class="formation-badge">Certifié</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="moodboard-section">
+                <h2 class="moodboard-title">Moodboard</h2>
+                <p class="moodboard-subtitle">Une collection d'images qui reflètent mon univers.</p>
+                <div class="moodboard-grid">
+                    <div class="mood-item tall">
+                        <img loading="lazy" src="./img/moodboard/ps.jpg" class="mood-img" alt="Inspiration">
+                    </div>
+                    <div class="mood-item wide">
+                        <img loading="lazy" src="./img/moodboard/ewen_opt.jpg" class="mood-img" alt="Inspiration">
+                    </div>
+                    <div class="mood-item">
+                        <img loading="lazy" src="./img/moodboard/applemusic.jpg" class="mood-img" alt="Inspiration">
+                    </div>
+                    <div class="mood-item">
+                        <img loading="lazy" src="./img/moodboard/cafet.webp" class="mood-img" alt="Inspiration">
+                    </div>
+                    <div class="mood-item big-wide">
+                        <img loading="lazy" src="./img/moodboard/podcast.jpg" class="mood-img" alt="Panorama">
+                    </div>
+                    <div class="mood-item">
+                        <img loading="lazy" src="./img/moodboard/dessin.jpg" class="mood-img" alt="Inspiration">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <button class="close-modal-btn" onclick="closeModal()">×</button>
+            <div class="modal-body">
+                <h2 id="modal-title">Titre du projet</h2>
+                <div
+                    style="width: 100%; aspect-ratio: 16/9; background: #f0f0f0; border-radius: 16px; margin-bottom: 2rem; position:relative; overflow:hidden;">
+                    <a id="modal-link" href="#" target="_blank" title="Voir le projet en grand">
+                        <img id="modal-image" src="" alt="Visuel du projet"
+                            style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <div id="modal-placeholder" class="cross" style="opacity: 0.5;"></div>
+                    </a>
+                </div>
+                <h3>Contexte et objectifs</h3>
+                <div id="modal-description" style="line-height: 1.6; color: #444;"></div>
+
+                <h3>Missions réalisées</h3>
+                <ul id="modal-missions" style="padding-left: 1.2rem; color: #444;"></ul>
+
+                <h3>Compétences</h3>
+                <div id="modal-competences" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+
+                <h3>Technologies</h3>
+                <div id="modal-tech-stack" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skill-modal" class="modal-overlay">
+        <div class="modal-content glass-panel skill-modal-content">
+            <button class="close-modal-btn" onclick="closeSkillModal()">×</button>
+            <div class="modal-body">
+                <div class="skill-header">
+                    <div id="skill-icon-container" class="skill-icon-large"></div>
+                    <h2 id="skill-title">Compétence</h2>
+                </div>
+                <div id="skill-description" style="margin: 1.5rem 0; line-height: 1.6; color: #555;">Description...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2>Une idée en tête ?</h2>
+                <p>Je suis prêt à vous aider pour votre futur projet.</p>
+                <a href="contact.html" class="footer-cta">Me contacter <span class="arrow">→</span></a>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links-group">
+                    <h3>Réseaux</h3>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/noé-le-jeune-7a2350304/">LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/noe__design">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#" onclick="switchPage('home')">Projets</a></li>
+                        <li><a href="#" onclick="switchPage('about')">À propos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 Noé Le Jeune. Tous droits réservés.</span></div>
+    </footer>
+    <script src="./js/preloader.js"></script>
+    <script src="./js/starfield.js"></script>
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/filtre.js"></script>
+    <script src="./js/projet.js"></script>
+    <script src="./js/animations.js"></script>
+    <script src="./js/competence.js"></script>
+    <script src="./js/timeline.js"></script>
+</body>
+
+</html>

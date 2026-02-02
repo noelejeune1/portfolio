@@ -1,0 +1,66 @@
+/* =========================================
+   FILTRES PROJETS - SEPARATED MODERN STYLE
+   ========================================= */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.filter-btn {
+    border: none;
+    background: var(--hover-overlay);
+    padding: 10px 24px;
+    border-radius: 26px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+}
+
+.filter-btn.active {
+    color: white;
+    background: var(--gradient-cosmic);
+    box-shadow: var(--shadow-glow);
+}
+
+.filter-btn:not(.active):hover {
+    color: var(--cosmic-blue);
+    background: rgba(96, 165, 250, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Animation pour masquer/afficher les projets */
+.project-card.hidden {
+    display: none;
+}
+
+.project-card.show {
+    animation: fadeInCard 0.5s ease forwards;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+}
