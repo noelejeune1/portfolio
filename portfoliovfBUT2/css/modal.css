@@ -42,30 +42,74 @@
     transform: scale(1) translateY(0);
 }
 
-.close-modal-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 44px;
-    height: 44px;
+/* Mac OS Controls */
+.mac-os-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.mac-btn {
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    font-size: 1.5rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--card-border);
+    border: none;
     cursor: pointer;
-    color: var(--text-primary);
     transition: var(--transition-fast);
+    padding: 0;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.close-modal-btn:hover {
-    background: var(--cosmic-blue);
-    color: white;
-    transform: rotate(90deg);
+/* Button colors matching Mac OS native hex codes */
+.close-btn {
+    background-color: #FF5F56;
+    box-shadow: 0 0 1px 1px rgba(224, 68, 62, 0.4);
 }
 
+.minimize-btn {
+    background-color: #FFBD2E;
+    box-shadow: 0 0 1px 1px rgba(225, 161, 22, 0.4);
+}
+
+.maximize-btn {
+    background-color: #27C93F;
+    box-shadow: 0 0 1px 1px rgba(26, 171, 41, 0.4);
+}
+
+.mac-os-controls:hover .mac-btn::after {
+    opacity: 1;
+}
+
+.mac-btn::after {
+    opacity: 0;
+    font-size: 10px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.close-btn::after {
+    content: "×";
+    line-height: 14px;
+}
+
+.minimize-btn::after {
+    content: "−";
+    line-height: 14px;
+}
+
+.maximize-btn::after {
+    content: "+";
+    line-height: 14px;
+    font-size: 12px;
+}
+
+/* Ensure body starts below the new standard controls */
 .modal-body h2 {
     font-size: 2rem;
     font-weight: 800;

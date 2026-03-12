@@ -1,0 +1,406 @@
+/* =========================================================================
+   VARIABLES & COLOR PALETTE
+   ========================================================================= */
+:root {
+    /* Main Palette */
+    --color-bordeaux: #530C46;
+    --color-gold: #E9C200;
+    --color-white: #FFFFFF;
+    --color-dark: #202020;
+
+    /* Semantic background & text */
+    --bg-primary: var(--color-white);
+    --text-primary: var(--color-dark);
+    --text-muted: #555555;
+
+    /* MacOS Window Colors */
+    --mac-red: #FF5F56;
+    --mac-yellow: #FFBD2E;
+    --mac-green: #27C93F;
+
+    /* Spacing & Sizes */
+    --mac-header-height: 40px;
+}
+
+/* =========================================================================
+   RESET & TYPOGRAPHY
+   ========================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.impact-title {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(3rem, 10vw, 6rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 1.2em;
+    color: var(--text-muted);
+}
+
+a {
+    color: var(--color-bordeaux);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+    color: var(--color-gold);
+}
+
+/* =========================================================================
+   SHARED COMPONENTS: HEADER, FOOTER, BUTTONS
+   ========================================================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--color-bordeaux);
+    letter-spacing: -0.05em;
+}
+
+nav a {
+    margin-left: 2.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    color: var(--color-bordeaux);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-btn {
+    background-color: var(--color-bordeaux);
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 10px 20px rgba(83, 12, 70, 0.2);
+}
+
+.primary-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(233, 194, 0, 0.3);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
+}
+
+.secondary-btn:hover {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-dark);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================================================
+   MAC OS MODAL
+   ========================================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.mac-window {
+    width: 100%;
+    max-width: 1000px;
+    height: 85vh;
+    background: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(30px) scale(0.98);
+}
+
+.mac-titlebar {
+    height: var(--mac-header-height);
+    background: rgba(246, 246, 246, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.mac-buttons {
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.mac-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.2s ease;
+}
+
+.mac-btn:hover {
+    filter: brightness(0.9);
+}
+
+.close-btn {
+    background: var(--mac-red);
+}
+
+.minimize-btn {
+    background: var(--mac-yellow);
+}
+
+.maximize-btn {
+    background: var(--mac-green);
+}
+
+.mac-titlebar:hover .mac-btn::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+.mac-titlebar:hover .close-btn::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 1L9 9M9 1L1 9' stroke='black' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+
+.mac-titlebar:hover .minimize-btn::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 5H9' stroke='black' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+
+.mac-titlebar:hover .maximize-btn::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 1L9 9M9 1L1 9M5 1V9M1 5H9' stroke='black' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+
+.mac-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #666;
+    pointer-events: none;
+}
+
+.mac-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.modal-info-section h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--color-gold);
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.missions-list {
+    list-style: none;
+    padding: 0;
+}
+
+.missions-list li {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.missions-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-cloud span {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tag-cloud span:hover {
+    background: var(--color-bordeaux);
+    border-color: var(--color-gold);
+    color: var(--color-white);
+}
+
+.modal-info-footer {
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .mac-content {
+        padding: 2rem;
+    }
+}
+
+/* =========================================================================
+   ENTRANCE LOADER
+   ========================================================================= */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bordeaux);
+    backdrop-filter: blur(40px);
+    z-index: 1;
+}
+
+.loader-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.loader-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 800;
+}
+
+.loader-subtitle {
+    color: var(--color-gold);
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}

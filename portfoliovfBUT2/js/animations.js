@@ -162,3 +162,46 @@ function initIntersectionAnimations() {
 document.addEventListener('DOMContentLoaded', initIntersectionAnimations);
 
 
+
+
+// =========================================
+// 8. MOODBOARD SCROLL ANIMATION (ContainerScroll style)
+// =========================================
+function initMoodboardScrollAnimation() {
+    const section = document.getElementById('moodboard-scroll-section');
+    const card = document.getElementById('moodboard-card-3d');
+    const header = document.getElementById('moodboard-scroll-header');
+
+    if (!section || !card || !header) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    const rotateStart = isMobile ? 15 : 20;
+    const rotateEnd   = 0;
+    const scaleStart  = isMobile ? 0.9 : 1.05;
+    const scaleEnd    = 1.0;
+    const translateYEnd = -80;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function clamp(v, min, max) { return Math.min(Math.max(v, min), max); }
+
+    function onScroll() {
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = section.offsetHeight;
+        const scrolled = -rect.top;
+        const total = sectionHeight - window.innerHeight;
+        const progress = clamp(total > 0 ? scrolled / total : 0, 0, 1);
+
+        const rotateX    = lerp(rotateStart, rotateEnd, progress);
+        const scale      = lerp(scaleStart, scaleEnd, progress);
+        const translateY = lerp(0, translateYEnd, progress);
+
+        card.style.transform   = 'perspective(1000px) rotateX(' + rotateX + 'deg) scale(' + scale + ')';
+        header.style.transform = 'translateY(' + translateY + 'px)';
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+}
+
+document.addEventListener('DOMContentLoaded', initMoodboardScrollAnimation);

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets - Noé Lejeune</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Specific styles for Project Listing Page */
+        .listing-header {
+            padding: 12rem 5% 4rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% -20%, rgba(83, 12, 70, 0.1), transparent 50%);
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 5%;
+        }
+
+        .filter-pill {
+            padding: 10px 24px;
+            border-radius: 40px;
+            background: rgba(83, 12, 70, 0.05);
+            border: 1px solid rgba(83, 12, 70, 0.1);
+            color: var(--color-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .filter-pill:hover {
+            background: rgba(83, 12, 70, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .filter-pill.active {
+            background: var(--color-bordeaux);
+            color: var(--color-white);
+            box-shadow: 0 10px 20px rgba(83, 12, 70, 0.2);
+            border-color: var(--color-bordeaux);
+        }
+
+        .listing-results {
+            padding: 0 5% 10rem;
+            min-height: 400px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem;
+            color: #888;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        /* Back to home button style */
+        .back-home {
+            position: absolute;
+            top: 10rem;
+            left: 5%;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-dark);
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: var(--color-bordeaux);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+
+<body class="listing-page">
+
+    <!-- MAIN WRAPPER -->
+    <div id="main-wrapper" style="opacity: 1;"> <!-- No loader for listing page for faster feel -->
+        <!-- HEADER -->
+        <header>
+            <div class="logo"><a href="index.html" style="color: inherit;">NL.</a></div>
+            <nav>
+                <a href="index.html#about">À propos</a>
+                <a href="index.html#projects">Projets</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="listing-header">
+                <a href="index.html" class="back-home">← Accueil</a>
+                <h1 class="impact-title" id="page-title">MES PROJETS</h1>
+                <p style="margin-top: 1rem; opacity: 0.7;">Explorez mes réalisations par catégories et domaines.</p>
+            </section>
+
+            <!-- PILLS FILTER -->
+            <div class="filter-container" id="filter-pills">
+                <button class="filter-pill active" data-filter="all">Tout voir</button>
+                <button class="filter-pill" data-filter="Audiovisuel">Audiovisuel</button>
+                <button class="filter-pill" data-filter="Communication">Communication</button>
+                <button class="filter-pill" data-filter="UX / UI">UX / UI</button>
+                <button class="filter-pill" data-filter="Marketing">Marketing</button>
+                <button class="filter-pill" data-filter="Dév Web">Dév Web</button>
+                <button class="filter-pill" data-filter="Prod. Graphique">Prod. Graphique</button>
+                <button class="filter-pill" data-filter="Gestion de projet">Gestion de projet</button>
+                <button class="filter-pill" data-filter="Écriture MM">Écriture MM</button>
+                <button class="filter-pill" data-filter="3D">3D</button>
+                <button class="filter-pill" data-filter="Personnel">Personnel</button>
+                <button class="filter-pill" data-filter="Motion Design">Motion Design</button>
+            </div>
+
+            <section class="listing-results">
+                <div class="projects-grid" id="listing-container">
+                    <!-- Filtered projects will be rendered here -->
+                </div>
+                <div id="no-results" class="no-results">
+                    Aucun projet ne correspond à ce filtre.
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 Noé Lejeune. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <!-- MAC OS PROJECT MODAL (Hidden by default) -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="mac-window">
+            <div class="mac-titlebar">
+                <div class="mac-buttons">
+                    <div class="mac-btn close-btn" id="close-modal"></div>
+                    <div class="mac-btn minimize-btn"></div>
+                    <div class="mac-btn maximize-btn"></div>
+                </div>
+                <div class="mac-title">Détails du Projet</div>
+            </div>
+            <div class="mac-content">
+                <div class="modal-grid">
+                    <div class="modal-left">
+                        <h2 id="modal-project-title">Titre du projet</h2>
+                        <div id="modal-project-image" class="placeholder-image large"></div>
+                        <p id="modal-project-desc">Description</p>
+                    </div>
+                    <div class="modal-right">
+                        <div class="modal-info-section">
+                            <h4>Missions</h4>
+                            <ul id="modal-project-missions" class="missions-list">
+                                <!-- Dynamic missions -->
+                            </ul>
+                        </div>
+                        <div class="modal-info-section">
+                            <h4>Compétences</h4>
+                            <div id="modal-project-competences" class="tag-cloud">
+                                <!-- Dynamic competences -->
+                            </div>
+                        </div>
+                        <div class="modal-info-section">
+                            <h4>Technologies</h4>
+                            <div id="modal-project-technologies" class="tag-cloud">
+                                <!-- Dynamic technologies -->
+                            </div>
+                        </div>
+                        <div class="modal-info-footer">
+                            <a href="#" id="modal-project-link" target="_blank" class="btn primary-btn small">Voir le
+                                projet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GSAP Libraries via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/projet.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Specific logic for the listing page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Re-run modal logic if needed, but it should be globally handled in main.js
+            // If main.js targets #projects-container specifically, we might need to point it to #listing-container
+
+            const params = new URLSearchParams(window.location.search);
+            const initialFilter = params.get('filter') || 'all';
+
+            // Set initial filter active pill
+            if (initialFilter !== 'all') {
+                const pills = document.querySelectorAll('.filter-pill');
+                pills.forEach(p => {
+                    p.classList.remove('active');
+                    if (p.getAttribute('data-filter') === initialFilter) {
+                        p.classList.add('active');
+                    }
+                });
+
+                // Update title if it's a category
+                if (['MMI', 'Perso', 'Passion'].includes(initialFilter)) {
+                    document.getElementById('page-title').textContent = initialFilter === 'Perso' ? 'PROJETS PERSONNELS' : initialFilter.toUpperCase();
+                }
+            }
+
+            // Handle filter clicks
+            const pills = document.querySelectorAll('.filter-pill');
+            pills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    pills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    const filter = pill.getAttribute('data-filter');
+
+                    // Update URL without reloading
+                    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + filter;
+                    window.history.pushState({ path: newUrl }, '', newUrl);
+
+                    renderFilteredProjects(filter);
+                });
+            });
+
+            renderFilteredProjects(initialFilter);
+        });
+
+        function renderFilteredProjects(filter) {
+            const container = document.getElementById('listing-container');
+            const noResults = document.getElementById('no-results');
+            container.innerHTML = '';
+
+            let count = 0;
+            Object.keys(window.projectsData).forEach(key => {
+                const project = window.projectsData[key];
+
+                // Filter logic: match either 'type' (MMI, Perso, Passion) or 'technologies' (domains)
+                const matchesType = (filter === 'all' || project.type === filter);
+                const matchesDomain = (project.technologies && project.technologies.includes(filter));
+
+                if (matchesType || matchesDomain) {
+                    const card = createProjectCardListing(key, project);
+                    container.appendChild(card);
+                    count++;
+                }
+            });
+
+            noResults.style.display = count === 0 ? 'block' : 'none';
+
+            // Re-init modal listeners for new cards
+            if (typeof initModalLogic === 'function') {
+                initModalLogic();
+            }
+        }
+
+        function createProjectCardListing(key, project) {
+            const card = document.createElement("div");
+            card.className = "project-card";
+            card.setAttribute("data-project", key);
+
+            const subtitle = project.description ? project.description.split('.')[0] + '.' : project.title;
+            const tags = project.technologies ? project.technologies.slice(0, 2).join(" • ") : "Design • Dev";
+
+            const cardImage = project.image
+                ? `<img src="${project.image}" alt="${project.title}">`
+                : `<div class="placeholder-image" style="width:100%; height:100%; background:#f0f0f0;"></div>`;
+
+            card.innerHTML = `
+                <div class="card-media">
+                    ${cardImage}
+                    <div class="hover-overlay">
+                        <div class="glass-btn">Voir le projet</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>${project.title}</h3>
+                    <p class="card-subtitle">${subtitle}</p>
+                    <div class="card-tags">${tags}</div>
+                </div>
+            `;
+            return card;
+        }
+    </script>
+</body>
+
+</html>

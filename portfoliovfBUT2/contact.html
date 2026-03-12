@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="./css/lang-switcher.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,42 +34,47 @@
             <span class="sub">© BUT 2ème année MMI Lannion</span>
         </div>
         <nav class="nav-pill">
-            <button class="nav-btn active" onclick="window.location.href='index.html'">Retour</button>
+            <button class="nav-btn active" onclick="window.location.href='index.html'"
+                data-i18n="contact.back">Retour</button>
         </nav>
     </header>
 
     <main class="page-container">
         <section class="contact-section fade-in">
             <div class="contact-hero">
-                <h1>Travaillons ensemble</h1>
-                <p>Vous avez un projet en tête ? Je serais ravi d'en discuter avec vous.</p>
+                <h1 data-i18n="contact.hero.title">Travaillons ensemble</h1>
+                <p data-i18n="contact.hero.subtitle">Vous avez un projet en tête ? Je serais ravi d'en discuter avec
+                    vous.</p>
             </div>
 
             <div class="contact-container">
                 <div class="contact-form-wrapper">
                     <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID"
                         method="POST">
-                        <h2>Envoyez-moi un message</h2>
+                        <h2 data-i18n="contact.form.title">Envoyez-moi un message</h2>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            <label for="email" data-i18n="contact.form.email">Email</label>
+                            <input type="email" id="email" name="email" required
+                                data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="john@example.com">
                         </div>
 
                         <div class="form-group">
-                            <label for="subject">Sujet</label>
+                            <label for="subject" data-i18n="contact.form.subject">Sujet</label>
                             <input type="text" id="subject" name="subject" required
+                                data-i18n-placeholder="contact.form.subjectPlaceholder"
                                 placeholder="Sujet de votre message">
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message" data-i18n="contact.form.message">Message</label>
                             <textarea id="message" name="message" rows="6" required
+                                data-i18n-placeholder="contact.form.messagePlaceholder"
                                 placeholder="Décrivez votre projet ou votre demande..."></textarea>
                         </div>
 
                         <button type="submit" class="submit-btn">
-                            Envoyer le message
+                            <span data-i18n="contact.form.submit">Envoyer le message</span>
                             <span class="arrow">→</span>
                         </button>
                     </form>
@@ -77,6 +83,7 @@
         </section>
     </main>
 
+    <script src="./js/i18n.js"></script>
     <script src="./js/theme-toggle.js"></script>
     <script src="./js/contact-form.js"></script>
 </body>

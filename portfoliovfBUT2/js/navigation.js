@@ -6,7 +6,7 @@
 function switchPage(pageId) {
     const buttons = document.querySelectorAll('.nav-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
-    
+
     // Active le bon bouton
     if (pageId === 'home') buttons[0].classList.add('active');
     if (pageId === 'about') buttons[1].classList.add('active');
@@ -43,7 +43,11 @@ const modalElements = {
 const contentToBlur = document.querySelectorAll('#main-header, #main-container');
 
 function openModal(projectId) {
-    const project = projectsData[projectId];
+    // Récupérer la langue courante depuis i18n.js
+    const lang = currentLang || 'fr';
+
+    // Utiliser la fonction helper pour obtenir les données traduites
+    const project = getProjectData(projectId, lang);
 
     if (!project) {
         console.error("Projet non trouvé : " + projectId);

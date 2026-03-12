@@ -1,5 +1,5 @@
 // =========================================
-// TIMELINE FORMATIONS - RANGE SLIDER
+// TIMELINE FORMATIONS - SMOOTH RANGE SLIDER
 // =========================================
 
 const timelineRange = document.getElementById('timeline-range');
@@ -7,35 +7,78 @@ const timelineSlider = document.querySelector('.timeline-slider');
 const timelineYearGroups = document.querySelectorAll('.timeline-year-group');
 const sliderProgress = document.querySelector('.slider-progress');
 
-const years = ['2023', '2024', '2027']; // 3 années seulement
-let currentIndex = 1; // Start at 2024 (index 1)
+const years = ['2023', '2024', '2027'];
+const yearPositions = [0, 50, 100]; // Positions en pourcentage sur le slider
 
-// Function to navigate to a specific year by index
-function navigateToYear(index) {
-    if (index < 0 || index >= years.length) return;
+// Function to find the closest year based on slider value
+function getClosestYear(value) {
+    let closestIndex = 0;
+    let minDistance = Math.abs(value - yearPositions[0]);
 
-    currentIndex = index;
-    const year = years[index];
+    for (let i = 1; i < yearPositions.length; i++) {
+        const distance = Math.abs(value - yearPositions[i]);
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = i;
+        }
+    }
 
-    // Update range input
-    timelineRange.value = index;
-
-    // Update progress bar (0% to 100%)
-    const progressPercent = (index / (years.length - 1)) * 100;
-    sliderProgress.style.width = `${progressPercent}%`;
-
-    // Remove active class from all groups
-    timelineYearGroups.forEach(group => group.classList.remove('active'));
-
-    // Add active class to current year (centered display)
-    const activeGroup = document.querySelector(`.timeline-year-group[data-year="${year}"]`);
-    if (activeGroup) activeGroup.classList.add('active');
+    return closestIndex;
 }
 
-// Range input change event
+// Function to update the timeline display
+function updateTimeline(value) {
+    // Update progress bar
+    sliderProgress.style.width = `${value}%`;
+
+    // Find the closest year
+    const closestIndex = getClosestYear(value);
+    const closestYear = years[closestIndex];
+
+    // Calculate opacity for each year group based on distance
+    timelineYearGroups.forEach((group, index) => {
+        const yearValue = yearPositions[index];
+        const distance = Math.abs(value - yearValue);
+
+        // Distance threshold for full opacity vs fade
+        const fadeRange = 30; // Distance where fade starts
+
+        if (distance <= fadeRange) {
+            // Within fade range - calculate opacity
+            const opacity = 1 - (distance / fadeRange);
+            group.style.opacity = opacity;
+            group.style.transform = `scale(${0.9 + opacity * 0.1})`;
+
+            // Only set active for the closest one
+            if (index === closestIndex) {
+                group.classList.add('active');
+            } else {
+                group.classList.remove('active');
+            }
+        } else {
+            // Too far - fade out completely
+            group.classList.remove('active');
+            group.style.opacity = '0';
+            group.style.transform = 'scale(0.9)';
+        }
+    });
+}
+
+// Range input change event - now with smooth sliding
 timelineRange.addEventListener('input', (e) => {
-    const index = parseInt(e.target.value);
-    navigateToYear(index);
+    const value = parseFloat(e.target.value);
+    updateTimeline(value);
+});
+
+// Snap to nearest year when releasing the slider
+timelineRange.addEventListener('change', (e) => {
+    const value = parseFloat(e.target.value);
+    const closestIndex = getClosestYear(value);
+    const snapValue = yearPositions[closestIndex];
+
+    // Smooth transition to the closest year
+    timelineRange.value = snapValue;
+    updateTimeline(snapValue);
 });
 
 // Keyboard navigation
@@ -47,10 +90,21 @@ document.addEventListener('keydown', (e) => {
     const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
 
     if (isVisible) {
+        const currentValue = parseFloat(timelineRange.value);
+        const currentIndex = getClosestYear(currentValue);
+
         if (e.key === 'ArrowLeft') {
-            navigateToYear(currentIndex - 1);
+            if (currentIndex > 0) {
+                const newValue = yearPositions[currentIndex - 1];
+                timelineRange.value = newValue;
+                updateTimeline(newValue);
+            }
         } else if (e.key === 'ArrowRight') {
-            navigateToYear(currentIndex + 1);
+            if (currentIndex < years.length - 1) {
+                const newValue = yearPositions[currentIndex + 1];
+                timelineRange.value = newValue;
+                updateTimeline(newValue);
+            }
         }
     }
 });
@@ -75,17 +129,30 @@ function handleSwipe() {
     const difference = touchStartX - touchEndX;
 
     if (Math.abs(difference) > swipeThreshold) {
+        const currentValue = parseFloat(timelineRange.value);
+        const currentIndex = getClosestYear(currentValue);
+
         if (difference > 0) {
-            // Swipe left - go to next year (higher index)
-            navigateToYear(currentIndex + 1);
+            // Swipe left - go to next year
+            if (currentIndex < years.length - 1) {
+                const newValue = yearPositions[currentIndex + 1];
+                timelineRange.value = newValue;
+                updateTimeline(newValue);
+            }
         } else {
-            // Swipe right - go to previous year (lower index)
-            navigateToYear(currentIndex - 1);
+            // Swipe right - go to previous year
+            if (currentIndex > 0) {
+                const newValue = yearPositions[currentIndex - 1];
+                timelineRange.value = newValue;
+                updateTimeline(newValue);
+            }
         }
     }
 }
 
-// Initialize on load
+// Initialize on load (default to middle year - 2024)
 document.addEventListener('DOMContentLoaded', () => {
-    navigateToYear(currentIndex);
+    const initialValue = yearPositions[1]; // 50 (2024)
+    timelineRange.value = initialValue;
+    updateTimeline(initialValue);
 });

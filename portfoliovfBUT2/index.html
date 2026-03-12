@@ -19,10 +19,12 @@
     <link rel="stylesheet" href="./css/moodboard.css">
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/lang-switcher.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 
 <body>
 
@@ -219,7 +221,20 @@
                         <div class="card-tags"><span>Motion Design</span> • <span>Perso</span></div>
                     </div>
                 </div>
+
+                <div class="project-card" data-categories="motion_design" onclick="openModal('motion_liquid_glass')">
+                    <div class="card-image">
+                        <img loading="lazy" src="./img/projet/motion_liquid_glass2.png" alt="Motion Design Project">
+                        <div class="card-overlay"><span class="view-btn">Voir le projet</span></div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Projet Motion Design</h3>
+                        <p>Animation Liquid Glass</p>
+                        <div class="card-tags"><span>Motion Design</span> • <span>Perso</span></div>
+                    </div>
+                </div>
             </div>
+
         </section>
 
         <section id="about" class="page-section">
@@ -241,7 +256,7 @@
                 </div>
 
                 <div class="profile-txt">
-                    <h1 class="about-title">À propos</h1>
+                    <h1 class="about-title" data-i18n="about.title">À propos</h1>
                     <h2 data-i18n="about.name">Noé Le Jeune</h2>
                     <p data-i18n="about.p1">
                         Passionné par le sport et l'univers digital, je transforme ma créativité dans des projets
@@ -263,7 +278,7 @@
 
             <div class="skills-container">
                 <div class="section-title">
-                    <h2>Mes Compétences</h2>
+                    <h2 data-i18n="about.skillsTitle">Mes Compétences</h2>
                 </div>
 
                 <div class="skills-carousel-wrapper">
@@ -392,14 +407,14 @@
             </div>
 
             <div class="formations-section">
-                <h2>Mon parcours</h2>
-                <p class="formations-subtitle">Formations et certifications</p>
+                <h2 data-i18n="about.pathTitle">Mon parcours</h2>
+                <p class="formations-subtitle" data-i18n="about.pathSubtitle">Formations et certifications</p>
 
                 <!-- Timeline Slider Control -->
                 <div class="timeline-slider-control">
                     <div class="slider-wrapper">
-                        <input type="range" id="timeline-range" class="timeline-range" min="0" max="2" value="1"
-                            step="1">
+                        <input type="range" id="timeline-range" class="timeline-range" min="0" max="100" value="50"
+                            step="0.1">
                         <div class="slider-track">
                             <div class="slider-progress"></div>
                         </div>
@@ -494,27 +509,46 @@
                 </div>
             </div>
 
-            <div class="moodboard-section">
-                <h2 class="moodboard-title">Moodboard</h2>
-                <p class="moodboard-subtitle">Une collection d'images qui reflètent mon univers.</p>
-                <div class="moodboard-grid">
-                    <div class="mood-item tall">
-                        <img loading="lazy" src="./img/moodboard/ps.jpg" class="mood-img" alt="Inspiration">
-                    </div>
-                    <div class="mood-item wide">
-                        <img loading="lazy" src="./img/moodboard/ewen_opt.jpg" class="mood-img" alt="Inspiration">
-                    </div>
-                    <div class="mood-item">
-                        <img loading="lazy" src="./img/moodboard/applemusic.jpg" class="mood-img" alt="Inspiration">
-                    </div>
-                    <div class="mood-item">
-                        <img loading="lazy" src="./img/moodboard/cafet.webp" class="mood-img" alt="Inspiration">
-                    </div>
-                    <div class="mood-item big-wide">
-                        <img loading="lazy" src="./img/moodboard/podcast.jpg" class="mood-img" alt="Panorama">
-                    </div>
-                    <div class="mood-item">
-                        <img loading="lazy" src="./img/moodboard/dessin.jpg" class="mood-img" alt="Inspiration">
+            <div class="moodboard-section nero" id="moodboard-scroll-section">
+                <div class="moodboard-scroll-container" id="moodboard-scroll-container">
+                    <div class="moodboard-scroll-inner">
+                        <!-- Header animé -->
+                        <div class="moodboard-scroll-header" id="moodboard-scroll-header">
+                            <h2 class="moodboard-title" data-i18n="about.moodboardTitle">Moodboard</h2>
+                            <p class="moodboard-subtitle" data-i18n="about.moodboardSubtitle">Une collection d'images
+                                qui reflètent mon univers.</p>
+                        </div>
+                        <!-- Carte 3D animée -->
+                        <div class="moodboard-card-3d" id="moodboard-card-3d">
+                            <div class="moodboard-card-inner">
+                                <div class="moodboard-grid">
+                                    <div class="mood-item tall">
+                                        <img loading="lazy" src="./img/moodboard/ps.jpg" class="mood-img"
+                                            alt="Inspiration">
+                                    </div>
+                                    <div class="mood-item wide">
+                                        <img loading="lazy" src="./img/moodboard/ewen_opt.jpg" class="mood-img"
+                                            alt="Inspiration">
+                                    </div>
+                                    <div class="mood-item">
+                                        <img loading="lazy" src="./img/moodboard/applemusic.jpg" class="mood-img"
+                                            alt="Inspiration">
+                                    </div>
+                                    <div class="mood-item">
+                                        <img loading="lazy" src="./img/moodboard/cafet.webp" class="mood-img"
+                                            alt="Inspiration">
+                                    </div>
+                                    <div class="mood-item big-wide">
+                                        <img loading="lazy" src="./img/moodboard/podcast.jpg" class="mood-img"
+                                            alt="Panorama">
+                                    </div>
+                                    <div class="mood-item">
+                                        <img loading="lazy" src="./img/moodboard/dessin.jpg" class="mood-img"
+                                            alt="Inspiration">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -522,8 +556,12 @@
     </main>
 
     <div id="project-modal" class="modal-overlay">
-        <div class="modal-content glass-panel">
-            <button class="close-modal-btn" onclick="closeModal()">×</button>
+        <div class="modal-content glass-panel apple-window">
+            <div class="mac-os-controls">
+                <button class="mac-btn close-btn" onclick="closeModal()" title="Fermer"></button>
+                <button class="mac-btn minimize-btn" title="Réduire"></button>
+                <button class="mac-btn maximize-btn" title="Agrandir"></button>
+            </div>
             <div class="modal-body">
                 <h2 id="modal-title">Titre du projet</h2>
                 <div
@@ -535,10 +573,10 @@
                     </a>
                 </div>
                 <h3>Contexte et objectifs</h3>
-                <div id="modal-description" style="line-height: 1.6; color: #444;"></div>
+                <div id="modal-description" style="line-height: 1.6;"></div>
 
                 <h3>Missions réalisées</h3>
-                <ul id="modal-missions" style="padding-left: 1.2rem; color: #444;"></ul>
+                <ul id="modal-missions" style="padding-left: 1.2rem;"></ul>
 
                 <h3>Compétences</h3>
                 <div id="modal-competences" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
@@ -550,8 +588,12 @@
     </div>
 
     <div id="skill-modal" class="modal-overlay">
-        <div class="modal-content glass-panel skill-modal-content">
-            <button class="close-modal-btn" onclick="closeSkillModal()">×</button>
+        <div class="modal-content glass-panel skill-modal-content apple-window">
+            <div class="mac-os-controls">
+                <button class="mac-btn close-btn" onclick="closeSkillModal()" title="Fermer"></button>
+                <button class="mac-btn minimize-btn" title="Réduire"></button>
+                <button class="mac-btn maximize-btn" title="Agrandir"></button>
+            </div>
             <div class="modal-body">
                 <div class="skill-header">
                     <div id="skill-icon-container" class="skill-icon-large"></div>
@@ -566,35 +608,40 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-left">
-                <h2>Une idée en tête ?</h2>
-                <p>Je suis prêt à vous aider pour votre futur projet.</p>
-                <a href="contact.html" class="footer-cta">Me contacter <span class="arrow">→</span></a>
+                <h2 data-i18n="footer.title">Une idée en tête ?</h2>
+                <p data-i18n="footer.subtitle">Je suis prêt à vous aider pour votre futur projet.</p>
+                <a href="contact.html" class="footer-cta"><span data-i18n="footer.cta">Me contacter</span> <span
+                        class="arrow">→</span></a>
             </div>
             <div class="footer-right">
                 <div class="footer-links-group">
-                    <h3>Réseaux</h3>
+                    <h3 data-i18n="footer.networksTitle">Réseaux</h3>
                     <ul>
                         <li><a href="https://www.linkedin.com/in/noé-le-jeune-7a2350304/">LinkedIn</a></li>
                         <li><a href="https://www.instagram.com/noe__design">Instagram</a></li>
                     </ul>
                 </div>
                 <div class="footer-links-group">
-                    <h3>Navigation</h3>
+                    <h3 data-i18n="footer.navTitle">Navigation</h3>
                     <ul>
-                        <li><a href="#" onclick="switchPage('home')">Projets</a></li>
-                        <li><a href="#" onclick="switchPage('about')">À propos</a></li>
+                        <li><a href="#" onclick="switchPage('home')" data-i18n="footer.projects">Projets</a></li>
+                        <li><a href="#" onclick="switchPage('about')" data-i18n="footer.about">À propos</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom"><span>© 2025 Noé Le Jeune. Tous droits réservés.</span></div>
+        <div class="footer-bottom"><span data-i18n="footer.rights">© 2025 Noé Le Jeune. Tous droits réservés.</span>
+        </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="./js/i18n.js"></script>
     <script src="./js/preloader.js"></script>
     <script src="./js/starfield.js"></script>
     <script src="./js/theme-toggle.js"></script>
     <script src="./js/navigation.js"></script>
     <script src="./js/filtre.js"></script>
     <script src="./js/projet.js"></script>
+    <script src="./js/projet-i18n.js"></script>
     <script src="./js/animations.js"></script>
     <script src="./js/competence.js"></script>
     <script src="./js/timeline.js"></script>

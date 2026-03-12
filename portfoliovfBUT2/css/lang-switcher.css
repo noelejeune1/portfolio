@@ -1,0 +1,66 @@
+/* Language Switcher */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    gap: 8px;
+    /* Fond et bordure supprimés pour avoir juste du texte */
+}
+
+.lang-option {
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.lang-option:hover {
+    background: var(--hover-bg);
+    color: var(--text-primary);
+}
+
+.lang-option.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Styles spécifiques pour le thème clair */
+:root[data-theme="light"] .lang-option {
+    color: var(--text-secondary);
+    /* Gris pour les boutons inactifs */
+}
+
+:root[data-theme="light"] .lang-option.active {
+    background: transparent;
+    /* Pas de fond pour le bouton actif */
+    color: var(--text-primary);
+    /* Noir pour le bouton actif */
+}
+
+:root[data-theme="light"] .lang-option:hover {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .lang-switcher {
+        top: 15px;
+        right: 15px;
+        padding: 4px;
+    }
+
+    .lang-option {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

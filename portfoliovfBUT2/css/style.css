@@ -5,65 +5,69 @@
 /* Light Theme (Day Mode) */
 :root[data-theme="light"] {
     /* Primary Colors */
-    --bg-primary: #f0f4ff;
-    --bg-secondary: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #475569;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F5F7;
+    --text-primary: #202020;
+    --text-secondary: #555555;
 
-    /* Space Theme Accents */
-    --cosmic-blue: #3b82f6;
-    --cosmic-purple: #8b5cf6;
-    --cosmic-pink: #ec4899;
-    --nebula-cyan: #06b6d4;
-    --star-glow: rgba(59, 130, 246, 0.4);
+    /* Accents - New Palette */
+    --cosmic-blue: #E9C200;
+    /* Yellow */
+    --cosmic-purple: #530C46;
+    /* Burgundy */
+    --cosmic-pink: #530C46;
+    --nebula-cyan: #E9C200;
+    --star-glow: rgba(83, 12, 70, 0.2);
 
     /* Gradients */
-    --gradient-cosmic: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-nebula: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
-    --gradient-space: linear-gradient(180deg, #1e3a8a 0%, #7c3aed 50%, #db2777 100%);
+    --gradient-cosmic: linear-gradient(135deg, #530C46 0%, #E9C200 100%);
+    --gradient-nebula: radial-gradient(ellipse at center, rgba(83, 12, 70, 0.05) 0%, transparent 70%);
+    --gradient-space: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 100%);
 
     /* Glass Effect */
     --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(32, 32, 32, 0.1);
     --blur-amount: 20px;
 
     /* Shadows */
-    --shadow-sm: 0 2px 10px rgba(59, 130, 246, 0.1);
-    --shadow-md: 0 10px 40px rgba(59, 130, 246, 0.15);
-    --shadow-lg: 0 25px 60px rgba(59, 130, 246, 0.2);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.12);
     --shadow-glow: 0 0 40px var(--star-glow);
 
     /* UI Elements */
     --card-bg: #ffffff;
-    --card-border: rgba(59, 130, 246, 0.1);
-    --hover-overlay: rgba(59, 130, 246, 0.05);
+    --card-border: rgba(32, 32, 32, 0.05);
+    --hover-overlay: rgba(83, 12, 70, 0.05);
 }
 
 /* Dark Theme (Night Mode - Default) */
 :root,
 :root[data-theme="dark"] {
-    /* Primary Colors - Deep Space */
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #1a1f35;
-    --text-primary: #e2e8f0;
-    --text-secondary: #cbd5e1;
+    /* Primary Colors - Deep Space -> Dark Mode */
+    --bg-primary: #202020;
+    --bg-secondary: #2a2a2a;
+    --text-primary: #FFFFFF;
+    --text-secondary: #aaaaaa;
 
-    /* Space Theme Accents */
-    --cosmic-blue: #60a5fa;
-    --cosmic-purple: #a78bfa;
-    --cosmic-pink: #f472b6;
-    --nebula-cyan: #22d3ee;
-    --star-glow: rgba(96, 165, 250, 0.6);
+    /* Accents - New Palette */
+    --cosmic-blue: #E9C200;
+    /* Yellow */
+    --cosmic-purple: #530C46;
+    /* Burgundy */
+    --cosmic-pink: #530C46;
+    --nebula-cyan: #E9C200;
+    --star-glow: rgba(233, 194, 0, 0.2);
 
     /* Gradients */
-    --gradient-cosmic: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-nebula: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-    --gradient-space: linear-gradient(180deg, #0f172a 0%, #1e1b4b 50%, #4c1d95 100%);
+    --gradient-cosmic: linear-gradient(135deg, #530C46 0%, #E9C200 100%);
+    --gradient-nebula: radial-gradient(ellipse at center, rgba(233, 194, 0, 0.05) 0%, transparent 70%);
+    --gradient-space: linear-gradient(180deg, #202020 0%, #2a2a2a 100%);
 
     /* Glass Effect */
-    --glass-bg: rgba(26, 31, 53, 0.7);
-    --glass-border: rgba(148, 163, 184, 0.1);
-    --blur-amount: 12px;
+    --glass-bg: rgba(32, 32, 32, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --blur-amount: 15px;
 
     /* Shadows */
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -72,9 +76,9 @@
     --shadow-glow: 0 0 40px var(--star-glow);
 
     /* UI Elements */
-    --card-bg: rgba(26, 31, 53, 0.8);
-    --card-border: rgba(148, 163, 184, 0.1);
-    --hover-overlay: rgba(96, 165, 250, 0.1);
+    --card-bg: rgba(42, 42, 42, 0.8);
+    --card-border: rgba(255, 255, 255, 0.05);
+    --hover-overlay: rgba(255, 255, 255, 0.05);
 }
 
 /* Common Variables */
