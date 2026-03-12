@@ -15,6 +15,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
 
     <style>
         /* Specific styles for Project Listing Page */
@@ -91,198 +92,212 @@
     </style>
 </head>
 
-<body class="listing-page">
-
-    <!-- MAIN WRAPPER -->
-    <div id="main-wrapper" style="opacity: 1;"> <!-- No loader for listing page for faster feel -->
-        <!-- HEADER -->
-        <header>
-            <div class="logo"><a href="index.html" style="color: inherit;">NL.</a></div>
-            <nav>
-                <a href="index.html#about">À propos</a>
-                <a href="index.html#projects">Projets</a>
-                <a href="index.html#contact">Contact</a>
-            </nav>
-        </header>
-
-        <main>
-            <section class="listing-header">
-                <a href="index.html" class="back-home">← Accueil</a>
-                <h1 class="impact-title" id="page-title">MES PROJETS</h1>
-                <p style="margin-top: 1rem; opacity: 0.7;">Explorez mes réalisations par catégories et domaines.</p>
-            </section>
-
-            <!-- PILLS FILTER -->
-            <div class="filter-container" id="filter-pills">
-                <button class="filter-pill active" data-filter="all">Tout voir</button>
-                <button class="filter-pill" data-filter="Audiovisuel">Audiovisuel</button>
-                <button class="filter-pill" data-filter="Communication">Communication</button>
-                <button class="filter-pill" data-filter="UX / UI">UX / UI</button>
-                <button class="filter-pill" data-filter="Marketing">Marketing</button>
-                <button class="filter-pill" data-filter="Dév Web">Dév Web</button>
-                <button class="filter-pill" data-filter="Prod. Graphique">Prod. Graphique</button>
-                <button class="filter-pill" data-filter="Gestion de projet">Gestion de projet</button>
-                <button class="filter-pill" data-filter="Écriture MM">Écriture MM</button>
-                <button class="filter-pill" data-filter="3D">3D</button>
-                <button class="filter-pill" data-filter="Personnel">Personnel</button>
-                <button class="filter-pill" data-filter="Motion Design">Motion Design</button>
-            </div>
-
-            <section class="listing-results">
-                <div class="projects-grid" id="listing-container">
-                    <!-- Filtered projects will be rendered here -->
-                </div>
-                <div id="no-results" class="no-results">
-                    Aucun projet ne correspond à ce filtre.
-                </div>
-            </section>
-        </main>
-
-        <!-- FOOTER -->
-        <footer>
-            <p>&copy; 2026 Noé Lejeune. Tous droits réservés.</p>
-        </footer>
+<!-- LIQUID GLASS ENTRANCE LOADER -->
+<div id="loader">
+    <div class="loader-content">
+        <h1 class="loader-title">Mes Projets</h1>
+        <p class="loader-subtitle">Noé Le Jeune</p>
     </div>
+    <div class="liquid-glass">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</div>
 
-    <!-- MAC OS PROJECT MODAL (Hidden by default) -->
-    <div id="project-modal" class="modal-overlay">
-        <div class="mac-window">
-            <div class="mac-titlebar">
-                <div class="mac-buttons">
-                    <div class="mac-btn close-btn" id="close-modal"></div>
-                    <div class="mac-btn minimize-btn"></div>
-                    <div class="mac-btn maximize-btn"></div>
-                </div>
-                <div class="mac-title">Détails du Projet</div>
+<!-- MAIN WRAPPER -->
+<div id="main-wrapper"> <!-- Loader handles opacity now -->
+    <!-- HEADER -->
+    <header>
+        <div class="logo"><a href="index.html" style="color: inherit;">NL.</a></div>
+        <nav>
+            <a href="index.html#about">À propos</a>
+            <a href="index.html#projects">Projets</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="listing-header">
+            <a href="index.html" class="back-home">← Accueil</a>
+            <h1 class="impact-title" id="page-title">MES PROJETS</h1>
+            <p style="margin-top: 1rem; opacity: 0.7;">Explorez mes réalisations par catégories et domaines.</p>
+        </section>
+
+        <!-- PILLS FILTER -->
+        <div class="filter-container" id="filter-pills">
+            <button class="filter-pill active" data-filter="all">Tout voir</button>
+            <button class="filter-pill" data-filter="Audiovisuel">Audiovisuel</button>
+            <button class="filter-pill" data-filter="Communication">Communication</button>
+            <button class="filter-pill" data-filter="UX / UI">UX / UI</button>
+            <button class="filter-pill" data-filter="Marketing">Marketing</button>
+            <button class="filter-pill" data-filter="Dév Web">Dév Web</button>
+            <button class="filter-pill" data-filter="Prod. Graphique">Prod. Graphique</button>
+            <button class="filter-pill" data-filter="Gestion de projet">Gestion de projet</button>
+            <button class="filter-pill" data-filter="Écriture MM">Écriture MM</button>
+            <button class="filter-pill" data-filter="3D">3D</button>
+            <button class="filter-pill" data-filter="Personnel">Personnel</button>
+            <button class="filter-pill" data-filter="Motion Design">Motion Design</button>
+        </div>
+
+        <section class="listing-results">
+            <div class="projects-grid" id="listing-container">
+                <!-- Filtered projects will be rendered here -->
             </div>
-            <div class="mac-content">
-                <div class="modal-grid">
-                    <div class="modal-left">
-                        <h2 id="modal-project-title">Titre du projet</h2>
-                        <div id="modal-project-image" class="placeholder-image large"></div>
-                        <p id="modal-project-desc">Description</p>
+            <div id="no-results" class="no-results">
+                Aucun projet ne correspond à ce filtre.
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Noé Lejeune. Tous droits réservés.</p>
+    </footer>
+</div>
+
+<!-- MAC OS PROJECT MODAL (Hidden by default) -->
+<div id="project-modal" class="modal-overlay">
+    <div class="mac-window">
+        <div class="mac-titlebar">
+            <div class="mac-buttons">
+                <div class="mac-btn close-btn" id="close-modal"></div>
+                <div class="mac-btn minimize-btn"></div>
+                <div class="mac-btn maximize-btn"></div>
+            </div>
+            <div class="mac-title">Détails du Projet</div>
+        </div>
+        <div class="mac-content">
+            <div class="modal-grid">
+                <div class="modal-left">
+                    <h2 id="modal-project-title">Titre du projet</h2>
+                    <div id="modal-project-image" class="placeholder-image large"></div>
+                    <p id="modal-project-desc">Description</p>
+                </div>
+                <div class="modal-right">
+                    <div class="modal-info-section">
+                        <h4>Missions</h4>
+                        <ul id="modal-project-missions" class="missions-list">
+                            <!-- Dynamic missions -->
+                        </ul>
                     </div>
-                    <div class="modal-right">
-                        <div class="modal-info-section">
-                            <h4>Missions</h4>
-                            <ul id="modal-project-missions" class="missions-list">
-                                <!-- Dynamic missions -->
-                            </ul>
+                    <div class="modal-info-section">
+                        <h4>Compétences</h4>
+                        <div id="modal-project-competences" class="tag-cloud">
+                            <!-- Dynamic competences -->
                         </div>
-                        <div class="modal-info-section">
-                            <h4>Compétences</h4>
-                            <div id="modal-project-competences" class="tag-cloud">
-                                <!-- Dynamic competences -->
-                            </div>
+                    </div>
+                    <div class="modal-info-section">
+                        <h4>Technologies</h4>
+                        <div id="modal-project-technologies" class="tag-cloud">
+                            <!-- Dynamic technologies -->
                         </div>
-                        <div class="modal-info-section">
-                            <h4>Technologies</h4>
-                            <div id="modal-project-technologies" class="tag-cloud">
-                                <!-- Dynamic technologies -->
-                            </div>
-                        </div>
-                        <div class="modal-info-footer">
-                            <a href="#" id="modal-project-link" target="_blank" class="btn primary-btn small">Voir le
-                                projet</a>
-                        </div>
+                    </div>
+                    <div class="modal-info-footer">
+                        <a href="#" id="modal-project-link" target="_blank" class="btn primary-btn small">Voir le
+                            projet</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- GSAP Libraries via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- GSAP Libraries via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Custom JS -->
-    <script src="js/projet.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-        // Specific logic for the listing page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Re-run modal logic if needed, but it should be globally handled in main.js
-            // If main.js targets #projects-container specifically, we might need to point it to #listing-container
+<!-- Custom JS -->
+<script src="js/projet.js"></script>
+<script src="js/main.js"></script>
+<script>
+    // Specific logic for the listing page
+    document.addEventListener('DOMContentLoaded', () => {
+        // Re-run modal logic if needed, but it should be globally handled in main.js
+        // If main.js targets #projects-container specifically, we might need to point it to #listing-container
 
-            const params = new URLSearchParams(window.location.search);
-            const initialFilter = params.get('filter') || 'all';
+        const params = new URLSearchParams(window.location.search);
+        const initialFilter = params.get('filter') || 'all';
 
-            // Set initial filter active pill
-            if (initialFilter !== 'all') {
-                const pills = document.querySelectorAll('.filter-pill');
-                pills.forEach(p => {
-                    p.classList.remove('active');
-                    if (p.getAttribute('data-filter') === initialFilter) {
-                        p.classList.add('active');
-                    }
-                });
-
-                // Update title if it's a category
-                if (['MMI', 'Perso', 'Passion'].includes(initialFilter)) {
-                    document.getElementById('page-title').textContent = initialFilter === 'Perso' ? 'PROJETS PERSONNELS' : initialFilter.toUpperCase();
-                }
-            }
-
-            // Handle filter clicks
+        // Set initial filter active pill
+        if (initialFilter !== 'all') {
             const pills = document.querySelectorAll('.filter-pill');
-            pills.forEach(pill => {
-                pill.addEventListener('click', () => {
-                    pills.forEach(p => p.classList.remove('active'));
-                    pill.classList.add('active');
-                    const filter = pill.getAttribute('data-filter');
-
-                    // Update URL without reloading
-                    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + filter;
-                    window.history.pushState({ path: newUrl }, '', newUrl);
-
-                    renderFilteredProjects(filter);
-                });
-            });
-
-            renderFilteredProjects(initialFilter);
-        });
-
-        function renderFilteredProjects(filter) {
-            const container = document.getElementById('listing-container');
-            const noResults = document.getElementById('no-results');
-            container.innerHTML = '';
-
-            let count = 0;
-            Object.keys(window.projectsData).forEach(key => {
-                const project = window.projectsData[key];
-
-                // Filter logic: match either 'type' (MMI, Perso, Passion) or 'technologies' (domains)
-                const matchesType = (filter === 'all' || project.type === filter);
-                const matchesDomain = (project.technologies && project.technologies.includes(filter));
-
-                if (matchesType || matchesDomain) {
-                    const card = createProjectCardListing(key, project);
-                    container.appendChild(card);
-                    count++;
+            pills.forEach(p => {
+                p.classList.remove('active');
+                if (p.getAttribute('data-filter') === initialFilter) {
+                    p.classList.add('active');
                 }
             });
 
-            noResults.style.display = count === 0 ? 'block' : 'none';
-
-            // Re-init modal listeners for new cards
-            if (typeof initModalLogic === 'function') {
-                initModalLogic();
+            // Update title if it's a category
+            if (['MMI', 'Perso', 'Passion'].includes(initialFilter)) {
+                document.getElementById('page-title').textContent = initialFilter === 'Perso' ? 'PROJETS PERSONNELS' : initialFilter.toUpperCase();
             }
         }
 
-        function createProjectCardListing(key, project) {
-            const card = document.createElement("div");
-            card.className = "project-card";
-            card.setAttribute("data-project", key);
+        // Handle filter clicks
+        const pills = document.querySelectorAll('.filter-pill');
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const filter = pill.getAttribute('data-filter');
 
-            const subtitle = project.description ? project.description.split('.')[0] + '.' : project.title;
-            const tags = project.technologies ? project.technologies.slice(0, 2).join(" • ") : "Design • Dev";
+                // Update URL without reloading
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + filter;
+                window.history.pushState({ path: newUrl }, '', newUrl);
 
-            const cardImage = project.image
-                ? `<img src="${project.image}" alt="${project.title}">`
-                : `<div class="placeholder-image" style="width:100%; height:100%; background:#f0f0f0;"></div>`;
+                renderFilteredProjects(filter);
+            });
+        });
 
-            card.innerHTML = `
+        renderFilteredProjects(initialFilter);
+    });
+
+    function renderFilteredProjects(filter) {
+        const container = document.getElementById('listing-container');
+        const noResults = document.getElementById('no-results');
+        container.innerHTML = '';
+
+        let count = 0;
+        Object.keys(window.projectsData).forEach(key => {
+            const project = window.projectsData[key];
+
+            // Filter logic: match either 'type' (MMI, Perso, Passion) or 'technologies' (domains)
+            const matchesType = (filter === 'all' || project.type === filter);
+            const matchesDomain = (project.technologies && project.technologies.includes(filter));
+
+            if (matchesType || matchesDomain) {
+                const card = createProjectCardListing(key, project);
+                container.appendChild(card);
+                count++;
+            }
+        });
+
+        noResults.style.display = count === 0 ? 'block' : 'none';
+
+        // Re-init modal listeners for new cards
+        if (typeof initModalLogic === 'function') {
+            initModalLogic();
+        }
+    }
+
+    function createProjectCardListing(key, project) {
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.setAttribute("data-project", key);
+
+        const subtitle = project.description ? project.description.split('.')[0] + '.' : project.title;
+        const tags = project.technologies ? project.technologies.slice(0, 2).join(" • ") : "Design • Dev";
+
+        const cardImage = project.image
+            ? `<img src="${project.image}" alt="${project.title}">`
+            : `<div class="placeholder-image" style="width:100%; height:100%; background:#f0f0f0;"></div>`;
+
+        card.innerHTML = `
                 <div class="card-media">
                     ${cardImage}
                     <div class="hover-overlay">
@@ -295,9 +310,9 @@
                     <div class="card-tags">${tags}</div>
                 </div>
             `;
-            return card;
-        }
-    </script>
+        return card;
+    }
+</script>
 </body>
 
 </html>

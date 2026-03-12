@@ -77,47 +77,53 @@ function initEntranceAnimation() {
     // Set initial state
     gsap.set(".loader-title", { opacity: 0, y: 50 });
     gsap.set(".loader-subtitle", { opacity: 0, y: 30 });
+    gsap.set(".line", { scaleY: 0, transformOrigin: "top" });
     gsap.set("#main-wrapper", { opacity: 0, scale: 1.05 });
 
-    // 1. Initial wait & text reveal
+    // 1. Initial wait & text reveal (Faster)
     tl.to(".loader-title", {
         y: 0,
         opacity: 1,
-        duration: 1.2,
+        duration: 0.8,
         ease: "expo.out",
-        delay: 0.5
+        delay: 0.2
     })
         .to(".loader-subtitle", {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.6,
             ease: "expo.out"
-        }, "-=0.8");
+        }, "-=0.6");
 
-    // 2. Liquid Glass Reveal effect
-    tl.to(".loader-content", {
-        y: -100,
-        opacity: 0,
-        filter: "blur(20px)",
-        duration: 1.2,
-        ease: "expo.in"
-    }, "+=1")
-
-        // Liquid glass shrinking / moving away
-        .to(".glass-overlay", {
-            scale: 1.5,
+    // 2. Liquid Glass Reveal effect using lines (Faster)
+    tl.to(".line", {
+        scaleY: 1,
+        duration: 0.7,
+        stagger: 0.05,
+        ease: "expo.inOut"
+    }, "+=0.2")
+        .to(".loader-content", {
+            y: -50,
             opacity: 0,
-            duration: 2,
+            filter: "blur(10px)",
+            duration: 0.5,
+            ease: "expo.in"
+        }, "-=0.5")
+        .to(".line", {
+            scaleY: 0,
+            transformOrigin: "bottom",
+            duration: 0.7,
+            stagger: 0.05,
             ease: "expo.inOut"
-        }, "-=0.8")
+        }, "-=0.1")
 
-        // 3. Reveal Main Wrapper smoothly
+        // 3. Reveal Main Wrapper smoothly (Faster)
         .to("#main-wrapper", {
             opacity: 1,
             scale: 1,
-            duration: 2,
+            duration: 1.2,
             ease: "expo.out"
-        }, "-=1.5");
+        }, "-=0.6");
 
     // Hero elements staggered reveal
     tl.from(".hero-content > *", {

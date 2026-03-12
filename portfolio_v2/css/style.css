@@ -85,70 +85,7 @@ a:hover {
 /* =========================================================================
    LIQUID GLASS ENTRANCE LOADER
    ========================================================================= */
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.glass-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-bordeaux);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    z-index: 1;
-    transform-origin: center;
-}
-
-/* Glass shine/highlight effect */
-.glass-overlay::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-    z-index: 2;
-    pointer-events: none;
-}
-
-.loader-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: var(--color-white);
-}
-
-.loader-title {
-    color: var(--color-white);
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 800;
-    margin-bottom: 0.1em;
-    letter-spacing: -0.04em;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-}
-
-.loader-subtitle {
-    color: var(--color-gold);
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    opacity: 0.9;
-}
+/* Loader styles moved to loading.css */
 
 /* =========================================================================
    LAYOUT & SHARED COMPONENTS
