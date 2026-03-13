@@ -1,0 +1,79 @@
+/* Specific Styles for Contact Page */
+.contact-section {
+    animation: fadeIn 1s ease-out;
+}
+
+.contact-hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    color: var(--color-ferrari-red);
+}
+
+.contact-form {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-group label {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.form-group input,
+.form-group textarea {
+    transition: all 0.3s ease;
+    border: 2px solid #eee;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-ferrari-red);
+    outline: none;
+    box-shadow: 0 0 10px rgba(166, 5, 26, 0.1);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10001;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-left: 5px solid var(--mac-green);
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    color: var(--mac-green);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

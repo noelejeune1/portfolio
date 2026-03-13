@@ -3,7 +3,7 @@ window.projectsData = {
     'infographie': {
         title: "Infographie - Fête de la Science",
         description: "Dans le cadre de la fête de la Science qui aura lieu dans toute la France en automne 2025, sur le sujet “Intelligence”. L’IUT de Lannion sera représenté par les départements à Lannion. Ce projet a pour but de rendre attrayant un sujet qui nous impacte tous.",
-        image: "./img/projet/infographie.pdf",
+        image: "./img/projet/infographieV2.png",
         link: "https://www.fetedelascience.fr/",
         missions: [
             "Identification de la cible",
@@ -92,7 +92,7 @@ window.projectsData = {
     'affiche_neymar': {
         title: "Affiche Sportive – Hommage à Neymar Jr ",
         description: "Ce projet personnel a pour but de concevoir une affiche promotionnelle type « poster collector » célébrant le passage du joueur Neymar Jr au FC Barcelone (période 2013-2017). L'objectif est de créer une composition visuelle forte qui hiérarchise l'information de manière dynamique : attirer l'attention par le visuel et le titrage, puis informer via une biographie et des statistiques clés, tout en respectant l'identité visuelle du club.",
-        image: "/img/projet/neymar2.png",
+        image: "./img/projet/neymar2.png",
         link: "#",
         missions: [
             "Recherche et traitement de l'image : Sélection iconographique et détourage précis du joueur pour l'intégrer sur un fond composé.",
@@ -127,7 +127,7 @@ window.projectsData = {
     'rendu_3d': {
         title: "Produire un bureau en 3d",
         description: "Réalisé dans le cadre de la R3.19 (BUT2 MMI), ce projet visait à reproduire une image de référence avec le plus haut degré de fidélité possible. L'objectif était de créer une scène 3D photoréaliste représentant une nature morte de bureau (livres, stylos, pot à crayons) en travaillant minutieusement les formes, les matériaux, l'éclairage et la composition pour correspondre à l'ambiance chaleureuse et texturée de l'original.",
-        image: "/img/projet/noelejeune-controle.png",
+        image: "./img/projet/noelejeune-controle.png",
         link: "#",
         missions: [
             "Modélisation polygone : Création précise des objets (carnets, stylos, pot) en respectant les proportions et les détails géométriques de l'image de référence.",

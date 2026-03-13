@@ -22,7 +22,7 @@
         .listing-header {
             padding: 12rem 5% 4rem;
             text-align: center;
-            background: radial-gradient(circle at 50% -20%, rgba(83, 12, 70, 0.1), transparent 50%);
+            background: radial-gradient(circle at 50% -20%, rgba(166, 5, 26, 0.1), transparent 50%);
         }
 
         .filter-container {
@@ -94,29 +94,34 @@
 
 <!-- LIQUID GLASS ENTRANCE LOADER -->
 <div id="loader">
-    <div class="loader-content">
-        <h1 class="loader-title">Mes Projets</h1>
-        <p class="loader-subtitle">Noé Le Jeune</p>
+    <div class="race-lights">
+        <div class="light red"></div>
+        <div class="light red"></div>
+        <div class="light red"></div>
+        <div class="light red"></div>
+        <div class="light red"></div>
     </div>
-    <div class="liquid-glass">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+    <div class="loader-track">
+        <div class="loader-car">
+            <img src="img/pdp.webp" alt="Driver">
+        </div>
     </div>
+    <div class="loader-text">LIGHTS OUT AND AWAY WE GO</div>
 </div>
 
 <!-- MAIN WRAPPER -->
 <div id="main-wrapper"> <!-- Loader handles opacity now -->
     <!-- HEADER -->
     <header>
-        <div class="logo"><a href="index.html" style="color: inherit;">NL.</a></div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/pdp.webp" alt="Noé Le Jeune">
+            </a>
+        </div>
         <nav>
-            <a href="index.html#about">À propos</a>
-            <a href="index.html#projects">Projets</a>
-            <a href="index.html#contact">Contact</a>
+            <a href="apropos.html">À propos</a>
+            <a href="projet.html" class="active">Projets</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 

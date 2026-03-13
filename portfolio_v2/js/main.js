@@ -7,10 +7,73 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     initEntranceAnimation();
-    renderProjects();
+    if (document.getElementById("projects-grid")) {
+        renderProjects();
+    }
     initModalLogic();
+    initSmoothScroll();
+    initTypewriter();
 
 });
+
+/**
+ * Typewriter Animation for Hero Section
+ */
+function initTypewriter() {
+    const textElement = document.getElementById("typewriter-text");
+    if (!textElement) return;
+
+    const fullText = "uniques.";
+    let currentIndex = 0;
+    const typingSpeed = 100; // ms per letter
+
+    // Start with a small delay after entrance animation
+    setTimeout(() => {
+        const type = () => {
+            if (currentIndex < fullText.length) {
+                textElement.textContent += fullText.charAt(currentIndex);
+                currentIndex++;
+                setTimeout(type, typingSpeed);
+            }
+        };
+        type();
+    }, 1000); // reduced from 1500 for better reactivity
+}
+
+/**
+ * Smooth Scroll for anchor links
+ */
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Update URL hash without jumping
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+
+    // Handle initial hash in URL (if coming from another page)
+    if (window.location.hash) {
+        setTimeout(() => {
+            const targetElement = document.querySelector(window.location.hash);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }, 1000); // Wait for entrance animation
+    }
+}
 
 /**
  * Render Project Cards Dynamically
@@ -57,82 +120,143 @@ function renderProjects() {
 }
 
 /**
- * Entrance Animation (Liquid Glass)
+ * F1 Loader Animation Logic (Once per session)
  */
 function initEntranceAnimation() {
+    const loader = document.getElementById("loader");
+    const wrapper = document.getElementById("main-wrapper");
+    if (!loader) return;
+
+    const hasSeenLoader = sessionStorage.getItem("hasSeenLoader");
+
+    if (hasSeenLoader) {
+        loader.style.display = "none";
+        loader.style.pointerEvents = "none";
+        if (wrapper) {
+            wrapper.style.opacity = "1";
+            wrapper.style.transform = "scale(1)";
+        }
+        return;
+    }
+
+    // First visit: Show loader
+    document.body.style.overflow = "hidden";
+    if (loader) loader.style.pointerEvents = "auto";
+    if (wrapper) {
+        wrapper.style.opacity = "0";
+        wrapper.style.transform = "scale(1.05)";
+    }
+
+    const lights = document.querySelectorAll('.light.red');
+    const car = document.querySelector('.loader-car');
+    const track = document.querySelector('.loader-track');
+    const text = document.querySelector('.loader-text');
+
     const tl = gsap.timeline({
         onComplete: () => {
-            // Restore scrolling once animation is done
             document.body.style.overflow = "auto";
-            document.documentElement.style.overflow = "auto";
-            // Completely hide the loader from DOM/Events
-            const loader = document.getElementById("loader");
             if (loader) {
                 loader.style.display = "none";
-                loader.style.pointerEvents = "none";
+            }
+            // Mark as seen
+            sessionStorage.setItem("hasSeenLoader", "true");
+
+            // Redirect smoothly to index if not already there
+            if (!window.location.pathname.endsWith("index.html") && window.location.pathname !== "/") {
+                window.location.href = "index.html";
             }
         }
     });
 
-    // Set initial state
-    gsap.set(".loader-title", { opacity: 0, y: 50 });
-    gsap.set(".loader-subtitle", { opacity: 0, y: 30 });
-    gsap.set(".line", { scaleY: 0, transformOrigin: "top" });
-    gsap.set("#main-wrapper", { opacity: 0, scale: 1.05 });
+    // 1. Text blinking
+    if (text) {
+        gsap.to(text, {
+            opacity: 0.5,
+            duration: 0.2,
+            yoyo: true,
+            repeat: 12
+        });
+    }
 
-    // 1. Initial wait & text reveal (Faster)
-    tl.to(".loader-title", {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "expo.out",
-        delay: 0.2
-    })
-        .to(".loader-subtitle", {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            ease: "expo.out"
-        }, "-=0.6");
+    // 2. Sequential lights on
+    if (lights.length > 0) {
+        tl.to(lights, {
+            backgroundColor: "#ff0000",
+            boxShadow: "0 0 15px #ff0000",
+            color: "#ffffff",
+            duration: 0.1,
+            stagger: 0.5,
+            delay: 0.5
+        });
 
-    // 2. Liquid Glass Reveal effect using lines (Faster)
-    tl.to(".line", {
-        scaleY: 1,
-        duration: 0.7,
-        stagger: 0.05,
-        ease: "expo.inOut"
-    }, "+=0.2")
-        .to(".loader-content", {
-            y: -50,
+        // 3. All lights out (Lights Out and Away We Go!)
+        tl.to(lights, {
+            backgroundColor: "#333",
+            boxShadow: "none",
+            color: "rgba(255, 255, 255, 0.2)",
+            duration: 0.1
+        }, "+=0.5");
+    }
+
+    // 4. F1 disappears & track turns white simultaneously
+    if (car) {
+        tl.to(car, {
             opacity: 0,
-            filter: "blur(10px)",
-            duration: 0.5,
-            ease: "expo.in"
-        }, "-=0.5")
-        .to(".line", {
-            scaleY: 0,
-            transformOrigin: "bottom",
-            duration: 0.7,
-            stagger: 0.05,
-            ease: "expo.inOut"
-        }, "-=0.1")
+            duration: 0.6,
+            ease: "power2.inOut"
+        }, "+=0.1");
+    }
 
-        // 3. Reveal Main Wrapper smoothly (Faster)
-        .to("#main-wrapper", {
+    if (track) {
+        tl.to(track, {
+            backgroundColor: "#ffffff",
+            opacity: 0.8,
+            duration: 0.6,
+            ease: "power2.inOut"
+        }, "<");
+    }
+
+    // 5. Entrance transition into site (loader fades and zooms)
+    tl.to(loader, {
+        opacity: 0,
+        scale: 1.5,
+        duration: 0.8,
+        ease: "power3.inOut"
+    });
+
+    // Hero visual anim
+    const heroVisual = document.querySelector('.hero-visual');
+    if (heroVisual) {
+        tl.from(heroVisual, {
+            x: 50,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power3.out"
+        }, "-=0.8");
+    }
+
+    // Reveal content
+    if (wrapper) {
+        tl.to(wrapper, {
             opacity: 1,
             scale: 1,
-            duration: 1.2,
-            ease: "expo.out"
-        }, "-=0.6");
+            duration: 1,
+            ease: "expo.out",
+            clearProps: "transform"
+        }, "-=1");
+    }
 
-    // Hero elements staggered reveal
-    tl.from(".hero-content > *", {
-        y: 50,
-        opacity: 0,
-        duration: 1.5,
-        stagger: 0.1,
-        ease: "expo.out"
-    }, "-=1.5");
+    // Hero staggered anim
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        tl.from(heroContent.children, {
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        }, "-=0.8");
+    }
 }
 
 /**
