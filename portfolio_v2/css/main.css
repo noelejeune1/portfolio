@@ -26,7 +26,7 @@
 }
 
 .hero-content .highlight {
-    color: var(--color-ferrari-red);
+    color: var(--color-bordeaux);
 }
 
 .hero-content p {
@@ -56,7 +56,7 @@
 .shape-1 {
     width: 400px;
     height: 400px;
-    background: var(--color-ferrari-red);
+    background: var(--color-bordeaux);
     top: 0;
     right: 0;
     opacity: 0.4;
@@ -65,7 +65,7 @@
 .shape-2 {
     width: 350px;
     height: 350px;
-    background: var(--color-modena-yellow);
+    background: var(--color-gold);
     bottom: 50px;
     right: 150px;
     opacity: 0.3;
@@ -73,121 +73,10 @@
 }
 
 @keyframes flow {
-    0% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-    }
-
-    33% {
-        transform: translate(30px, -50px) rotate(10deg) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-20px, 20px) rotate(-10deg) scale(0.9);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-    }
-}
-
-/* =========================================================================
-   PROJECTS SECTION (COMMON CARD LOOK)
-   ========================================================================= */
-section {
-    padding: 8rem 5% 4rem;
-}
-
-.section-header {
-    text-align: left;
-    margin-bottom: 5rem;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 40px;
-}
-
-.project-card {
-    background: #FFFFFF;
-    border-radius: 24px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(166, 5, 26, 0.1);
-}
-
-.card-media {
-    position: relative;
-    height: 260px;
-    overflow: hidden;
-}
-
-.card-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s ease;
-}
-
-.project-card:hover .card-media img {
-    transform: scale(1.05);
-}
-
-.hover-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: 0.3s;
-    backdrop-filter: blur(5px);
-}
-
-.project-card:hover .hover-overlay {
-    opacity: 1;
-}
-
-.glass-btn {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 12px 28px;
-    border-radius: 40px;
-    color: white;
-    font-weight: 600;
-}
-
-.card-content {
-    padding: 30px;
-}
-
-.card-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-}
-
-.card-subtitle {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.card-tags {
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--color-dark);
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33% { transform: translate(30px, -50px) rotate(10deg) scale(1.1); }
+    66% { transform: translate(-20px, 20px) rotate(-10deg) scale(0.9); }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
 /* =========================================================================
@@ -196,6 +85,11 @@ section {
 #categories {
     padding: 10rem 5%;
     background: #fff;
+}
+
+.section-header {
+    text-align: left;
+    margin-bottom: 5rem;
 }
 
 .categories-grid {
@@ -217,11 +111,13 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    text-decoration: none;
+    color: var(--color-dark);
 }
 
 .category-card:hover {
     transform: translateY(-10px);
-    border-color: var(--color-ferrari-red);
+    border-color: var(--color-bordeaux);
 }
 
 .category-icon {
@@ -233,22 +129,29 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    font-family: 'Anton';
+    font-family: 'Anton', sans-serif;
     font-size: 1.2rem;
 }
 
 .category-card:hover .category-icon {
-    background: var(--color-ferrari-red);
+    background: var(--color-bordeaux);
 }
 
-@media (max-width: 900px) {
-    .categories-grid {
-        grid-template-columns: 1fr;
-    }
+.category-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.category-card p {
+    font-size: 0.95rem;
+    opacity: 0.6;
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* =========================================================================
-   ABOUT SECTION
+   ABOUT SECTION (SNIPPET)
    ========================================================================= */
 #about {
     background-color: var(--color-dark);
@@ -269,7 +172,7 @@ section {
 }
 
 .signature-text {
-    font-family: 'Dancing Script';
+    font-family: 'Dancing Script', cursive;
     font-size: 2.5rem;
     opacity: 0.9;
 }
@@ -287,6 +190,7 @@ section {
     height: 100%;
     background: radial-gradient(circle, rgba(166, 5, 26, 0.4) 0%, transparent 70%);
     filter: blur(50px);
+    z-index: 1;
 }
 
 .image-grid {
@@ -294,6 +198,7 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     z-index: 2;
+    position: relative;
 }
 
 .grid-img {
@@ -303,40 +208,21 @@ section {
     border-radius: 15px;
     filter: grayscale(1);
     transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .grid-img:hover {
     filter: grayscale(0);
     transform: scale(1.05);
+    border-color: var(--color-bordeaux);
 }
 
-.img-1 {
-    transform: translateY(-20px) rotate(-5deg);
-    background-image: url('../img/projet/neymar2.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.img-2 {
-    transform: translateY(20px) rotate(5deg);
-    background-image: url('../img/projet/leclerc2.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.img-3 {
-    transform: translateY(-10px) rotate(3deg);
-    background-image: url('../img/projet/locfit2.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.img-4 {
-    transform: translateY(10px) rotate(-3deg);
-    background-image: url('../img/projet/dehwatch.jpg');
-    background-size: cover;
-    background-position: center;
-}
+.img-1 { transform: translateY(-20px) rotate(-5deg); background-image: url('../img/projet/neymar2.jpg'); }
+.img-2 { transform: translateY(20px) rotate(5deg); background-image: url('../img/projet/leclerc2.jpg'); }
+.img-3 { transform: translateY(-10px) rotate(3deg); background-image: url('../img/projet/locfit2.png'); }
+.img-4 { transform: translateY(10px) rotate(-3deg); background-image: url('../img/projet/dehwatch.jpg'); }
 
 .about-text {
     text-align: right;
@@ -348,6 +234,12 @@ section {
 .intro-description {
     font-size: 1.5rem;
     font-weight: 700;
+    color: white;
+}
+
+.main-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .en-savoir-plus {
@@ -357,26 +249,19 @@ section {
     padding: 12px 30px;
     border-radius: 40px;
     font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 900px) {
-    .about-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .about-text {
-        text-align: center;
-        align-items: center;
-    }
-
-    .en-savoir-plus {
-        align-self: center;
-    }
+.en-savoir-plus:hover {
+    background: var(--color-gold);
+    color: var(--color-dark);
+    transform: translateX(10px);
 }
 
 /* =========================================================================
-   CONTACT SECTION
+   CONTACT SECTION (SNIPPET)
    ========================================================================= */
 #contact {
     text-align: center;
@@ -392,4 +277,24 @@ section {
 #contact h2 {
     font-size: clamp(2rem, 5vw, 4rem);
     color: white;
+}
+
+#contact p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 500px;
+}
+
+/* =========================================================================
+   MEDIA QUERIES
+   ========================================================================= */
+@media (max-width: 900px) {
+    .categories-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; text-align: center; gap: 6rem; }
+    .about-text { text-align: center; align-items: center; }
+    .en-savoir-plus { align-self: center; }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
 }

@@ -125,7 +125,16 @@ function renderProjects() {
 function initEntranceAnimation() {
     const loader = document.getElementById("loader");
     const wrapper = document.getElementById("main-wrapper");
-    if (!loader) return;
+
+    // If no loader is present on the page (e.g., secondary pages), reveal wrapper and exit
+    if (!loader) {
+        if (wrapper) {
+            wrapper.style.opacity = "1";
+            wrapper.style.transform = "scale(1)";
+            document.body.style.overflow = "auto";
+        }
+        return;
+    }
 
     const hasSeenLoader = sessionStorage.getItem("hasSeenLoader");
 
@@ -135,6 +144,7 @@ function initEntranceAnimation() {
         if (wrapper) {
             wrapper.style.opacity = "1";
             wrapper.style.transform = "scale(1)";
+            document.body.style.overflow = "auto";
         }
         return;
     }
@@ -147,9 +157,9 @@ function initEntranceAnimation() {
         wrapper.style.transform = "scale(1.05)";
     }
 
-    const lights = document.querySelectorAll('.light.red');
+    const lights = document.querySelectorAll('.light');
     const car = document.querySelector('.loader-car');
-    const track = document.querySelector('.loader-track');
+    const progressBar = document.getElementById('loader-progress');
 
     // Setup typewriter text
     const quoteText = document.querySelector('.quote-text');
@@ -176,11 +186,6 @@ function initEntranceAnimation() {
             }
             // Mark as seen
             sessionStorage.setItem("hasSeenLoader", "true");
-
-            // Redirect smoothly to index if not already there
-            if (!window.location.pathname.endsWith("index.html") && window.location.pathname !== "/") {
-                window.location.href = "index.html";
-            }
         }
     });
 
@@ -204,21 +209,28 @@ function initEntranceAnimation() {
         tl.to(lights, {
             backgroundColor: "#ff0000",
             boxShadow: "0 0 20px #ff0000",
-            color: "#ffffff",
             duration: 0.1,
             stagger: 1 // 1 second interval between each light (5 lights = 4 seconds to last light)
         }, "+=0.3"); // Wait a little after text
 
         // 3. All lights out (Lights Out and Away We Go!)
         tl.to(lights, {
-            backgroundColor: "#333",
+            backgroundColor: "#222222",
             boxShadow: "none",
-            color: "rgba(255, 255, 255, 0.2)",
             duration: 0.1
         }, "+=0.9"); // exactly 1 second after the last light turns on
     }
 
-    // 4. F1 drives towards user (scale up) & track turns white
+    // ProgressBar animation (filling up alongside the lights or text)
+    if (progressBar) {
+        tl.to(progressBar, {
+            width: "100%",
+            duration: 4.5,
+            ease: "power1.inOut"
+        }, 0); // Start matching the lights duration roughly
+    }
+
+    // 4. F1 drives towards user (scale up) & wrap fades
     if (car) {
         tl.to(car, {
             opacity: 0,
@@ -226,15 +238,6 @@ function initEntranceAnimation() {
             duration: 0.8,
             ease: "power3.in"
         }, "+=0.1"); // right as lights go out
-    }
-
-    if (track) {
-        tl.to(track, {
-            backgroundColor: "#ffffff",
-            opacity: 0.8,
-            duration: 0.6,
-            ease: "power2.inOut"
-        }, "<");
     }
 
     // 5. Entrance transition into site (loader fades and zooms)

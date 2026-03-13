@@ -14,32 +14,33 @@
         rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/global.css?v=3">
+    <link rel="stylesheet" href="css/main.css?v=3">
+    <link rel="stylesheet" href="css/loading.css?v=3">
 </head>
 
 <body>
 
     <!-- LIQUID GLASS ENTRANCE LOADER -->
     <div id="loader">
+        <h1 class="loader-title">PORTFOLIO</h1>
         <div class="race-lights">
-            <div class="light red"></div>
-            <div class="light red"></div>
-            <div class="light red"></div>
-            <div class="light red"></div>
-            <div class="light red"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
         </div>
-        <div class="loader-track">
-            <div class="loader-car">
-                <img src="img/f1_front.webp" alt="F1 Logo">
-            </div>
+        <div class="loader-car">
+            <img src="img/f1_front.webp" alt="F1 Logo">
         </div>
         <div class="loader-text">
-            "<span class="quote-text">Montez le volume et rendez-vous au premier virage</span>"
+            “<span class="quote-text">Monter le volume et rendez vous au premier virage</span>”
             <br>
-            <span class="author"><i>- Julien Fébreau</i></span>
+            <span class="author">Julien Fébreau</span>
+        </div>
+        <div class="loader-progress-container">
+            <div class="loader-progress-bar" id="loader-progress"></div>
         </div>
     </div>
 
@@ -127,7 +128,7 @@
                             Actuellement En BUT MMI, Je Développe Mes Compétences Et Travaille Sur Des Projets Variés
                             Qui Allient Esthétisme Et Fonctionnalité.
                         </p>
-                        <a href="#" class="btn en-savoir-plus">En savoir plus →</a>
+                        <a href="./apropos.html" class="btn en-savoir-plus">En savoir plus →</a>
                     </div>
                 </div>
             </div>
@@ -184,7 +185,7 @@
                             </div>
                         </div>
                         <div class="modal-info-footer">
-                            <a href="#" id="modal-project-link" target="_blank" class="btn primary-btn small">Voir le
+                            <a href="javascript:void(0)" id="modal-project-link" target="_blank" class="btn primary-btn small">Voir le
                                 projet</a>
                         </div>
                     </div>
@@ -199,8 +200,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="js/projet.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/projet.js?v=2"></script>
+    <script src="js/main.js?v=2"></script>
 </body>
 
 </html>

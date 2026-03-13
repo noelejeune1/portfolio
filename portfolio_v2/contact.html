@@ -9,33 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/loading.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/global.css?v=3">
+    <link rel="stylesheet" href="css/loading.css?v=3">
+    <link rel="stylesheet" href="css/contact.css?v=3">
 </head>
 
 <body>
-    <div id="loader">
-        <div class="race-lights">
-            <div class="light red"></div>
-            <div class="light red"></div>
-            <div class="light red"></div>
-            <div class="light red"></div>
-            <div class="light red"></div>
-        </div>
-        <div class="loader-track">
-            <div class="loader-car">
-                <img src="img/f1_front.webp" alt="F1 Logo">
-            </div>
-        </div>
-        <div class="loader-text">
-            <span class="quote-text">Montez le volume et rendez-vous au premier virage</span>"
-            <br>
-            <span class="author"><i>- Julien Fébreau</i></span>
-        </div>
-    </div>
-
     <div id="main-wrapper">
         <header>
             <div class="logo">
@@ -50,35 +30,32 @@
             </nav>
         </header>
 
-        <main class="page-container" style="padding-top: 8rem;">
+        <main class="page-container">
             <section class="contact-section">
-                <div class="contact-hero" style="text-align: center; margin-bottom: 4rem;">
+                <div class="contact-hero">
                     <h1 class="impact-title">TRAVAILLONS ENSEMBLE</h1>
                     <p>Vous avez un projet en tête ? Parlons-en.</p>
                 </div>
 
-                <div class="contact-container" style="max-width: 600px; margin: 0 auto; padding: 0 5%;">
+                <div class="contact-container">
                     <form id="contact-form" class="contact-form">
-                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="votre@email.com"
-                                style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ddd; margin-top: 0.5rem;">
+                            <input type="email" id="email" name="email" required placeholder="votre@email.com">
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <div class="form-group">
                             <label for="subject">Sujet</label>
                             <input type="text" id="subject" name="subject" required
-                                placeholder="L'objet de votre message"
-                                style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ddd; margin-top: 0.5rem;">
+                                placeholder="L'objet de votre message">
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 2rem;">
+                        <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Votre message..."
-                                style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ddd; margin-top: 0.5rem;"></textarea>
+                            <textarea id="message" name="message" rows="6" required placeholder="Votre message..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn primary-btn" style="width: 100%;">Envoyer le message</button>
+                        <button type="submit" class="btn primary-btn">Envoyer le message</button>
                     </form>
                 </div>
             </section>
@@ -91,8 +68,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="./js/contact_form.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/contact_form.js?v=2"></script>
+    <script src="./js/main.js?v=2"></script>
 </body>
 
 </html>
