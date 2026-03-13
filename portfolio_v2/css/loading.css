@@ -14,19 +14,21 @@
 }
 
 .loader-track {
-    width: 300px;
+    width: 100vw;
     height: 4px;
     background: rgba(255, 255, 255, 0.1);
-    position: relative;
-    border-radius: 2px;
-    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
 }
 
 .loader-car {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+    transform: translate(-50%, 0);
+    /* Sit directly on the track */
     width: auto;
     height: auto;
     background: transparent;
@@ -38,7 +40,7 @@
 }
 
 .loader-car img {
-    width: 150px;
+    width: 550px;
     height: auto;
     border-radius: 0;
     object-fit: contain;
@@ -50,19 +52,36 @@
     font-size: 1.5rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-style: italic;
-    animation: blink 0.5s infinite alternate;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.quote-text span {
+    display: inline-block;
+    opacity: 0;
+    /* JS will handle fading in */
+}
+
+.author {
+    font-size: 1.1rem;
+    color: var(--color-ferrari-red);
+    opacity: 0;
+    /* JS will fade author in at the end */
 }
 
 .race-lights {
     display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 25px;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0;
 }
 
 .light {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: #333;
     display: flex;
@@ -70,7 +89,7 @@
     align-items: center;
     color: rgba(255, 255, 255, 0.2);
     font-family: 'Anton', sans-serif;
-    font-size: 1.2rem;
+    font-size: 2rem;
     box-shadow: none;
 }
 

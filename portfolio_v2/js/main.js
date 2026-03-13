@@ -150,7 +150,23 @@ function initEntranceAnimation() {
     const lights = document.querySelectorAll('.light.red');
     const car = document.querySelector('.loader-car');
     const track = document.querySelector('.loader-track');
-    const text = document.querySelector('.loader-text');
+
+    // Setup typewriter text
+    const quoteText = document.querySelector('.quote-text');
+    const authorSpan = document.querySelector('.author');
+    let quoteChars = [];
+
+    if (quoteText) {
+        const text = quoteText.textContent.trim();
+        quoteText.textContent = '';
+        text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char; // Keep spaces intact
+            span.style.opacity = "0";
+            quoteText.appendChild(span);
+            quoteChars.push(span);
+        });
+    }
 
     const tl = gsap.timeline({
         onComplete: () => {
@@ -168,26 +184,30 @@ function initEntranceAnimation() {
         }
     });
 
-    // 1. Text blinking
-    if (text) {
-        gsap.to(text, {
-            opacity: 0.5,
-            duration: 0.2,
-            yoyo: true,
-            repeat: 12
+    // 1. Typewriter animation for the quote
+    if (quoteChars.length > 0) {
+        tl.to(quoteChars, {
+            opacity: 1,
+            duration: 0.05,
+            stagger: 0.03,
+            ease: "none"
         });
+    }
+
+    // Fade in author slightly after quote starts
+    if (authorSpan) {
+        tl.to(authorSpan, { opacity: 1, duration: 0.5 }, "-=0.5");
     }
 
     // 2. Sequential lights on
     if (lights.length > 0) {
         tl.to(lights, {
             backgroundColor: "#ff0000",
-            boxShadow: "0 0 15px #ff0000",
+            boxShadow: "0 0 20px #ff0000",
             color: "#ffffff",
             duration: 0.1,
-            stagger: 0.5,
-            delay: 0.5
-        });
+            stagger: 1 // 1 second interval between each light (5 lights = 4 seconds to last light)
+        }, "+=0.3"); // Wait a little after text
 
         // 3. All lights out (Lights Out and Away We Go!)
         tl.to(lights, {
@@ -195,16 +215,17 @@ function initEntranceAnimation() {
             boxShadow: "none",
             color: "rgba(255, 255, 255, 0.2)",
             duration: 0.1
-        }, "+=0.5");
+        }, "+=0.9"); // exactly 1 second after the last light turns on
     }
 
-    // 4. F1 disappears & track turns white simultaneously
+    // 4. F1 drives towards user (scale up) & track turns white
     if (car) {
         tl.to(car, {
             opacity: 0,
-            duration: 0.6,
-            ease: "power2.inOut"
-        }, "+=0.1");
+            scale: 6, // F1 speeds towards the camera
+            duration: 0.8,
+            ease: "power3.in"
+        }, "+=0.1"); // right as lights go out
     }
 
     if (track) {
