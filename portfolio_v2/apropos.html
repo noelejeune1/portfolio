@@ -9,12 +9,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/global.css?v=3">
-    <link rel="stylesheet" href="css/apropos.css?v=3">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/loading.css">
 </head>
 
 <body class="f1-theme">
+    <div id="loader">
+        <div class="race-lights">
+            <div class="light red"></div>
+            <div class="light red"></div>
+            <div class="light red"></div>
+            <div class="light red"></div>
+            <div class="light red"></div>
+        </div>
+        <div class="loader-track">
+            <div class="loader-car">
+                <img src="img/f1_front.webp" alt="F1 Logo">
+            </div>
+        </div>
+        <div class="loader-text">
+            <span class="quote-text">Montez le volume et rendez-vous au premier virage</span>"
+            <br>
+            <span class="author"><i>- Julien Fébreau</i></span>
+        </div>
+    </div>
+
     <div id="main-wrapper">
         <header>
             <div class="logo">
@@ -29,14 +49,14 @@
             </nav>
         </header>
 
-        <section class="page-header">
+        <section class="page-header" style="padding-top: 10rem; text-align: center;">
             <h1 class="impact-title">À PROPOS</h1>
-            <p>Passionné par le design et la technologie, je m'efforce de
+            <p style="max-width: 800px; margin: 2rem auto;">Passionné par le design et la technologie, je m'efforce de
                 créer des expériences numériques qui marquent les esprits.</p>
         </section>
 
-        <section class="about-details">
-            <div class="content">
+        <section class="about-details" style="padding: 5rem 5%;">
+            <div class="content" style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
                 <p>Étudiant en BUT MMI (Métiers du Multimédia et de l'Internet), je combine mes compétences techniques
                     en développement front-end avec une vision artistique forte.</p>
                 <p>Mon univers visuel s'inspire de la précision de la Formule 1 et de l'élégance de l'écosystème Apple.
@@ -51,7 +71,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="js/main.js?v=2"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
