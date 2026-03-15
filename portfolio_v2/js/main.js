@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Register ScrollTrigger to GSAP
     gsap.registerPlugin(ScrollTrigger);
 
-    initEntranceAnimation();
     if (document.getElementById("projects-grid")) {
         renderProjects();
     }
@@ -23,21 +22,40 @@ function initTypewriter() {
     const textElement = document.getElementById("typewriter-text");
     if (!textElement) return;
 
-    const fullText = "uniques.";
-    let currentIndex = 0;
-    const typingSpeed = 100; // ms per letter
+    const words = ["unique", "moderne", "innovante", "sur mesure", "jeune"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
 
-    // Start with a small delay after entrance animation
-    setTimeout(() => {
-        const type = () => {
-            if (currentIndex < fullText.length) {
-                textElement.textContent += fullText.charAt(currentIndex);
-                currentIndex++;
-                setTimeout(type, typingSpeed);
-            }
-        };
-        type();
-    }, 1000); // reduced from 1500 for better reactivity
+    const type = () => {
+        const currentWord = words[wordIndex];
+
+        if (isDeleting) {
+            textElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 50; // Faster deleting
+        } else {
+            textElement.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+            typeSpeed = 100; // Normal typing
+        }
+
+        // Handle word completion
+        if (!isDeleting && charIndex === currentWord.length) {
+            isDeleting = true;
+            typeSpeed = 1500; // Pause at the end of word
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500; // Pause before typing next word
+        }
+
+        setTimeout(type, typeSpeed);
+    };
+
+    // Start with a small delay
+    setTimeout(type, 1000);
 }
 
 /**
@@ -119,166 +137,7 @@ function renderProjects() {
     });
 }
 
-/**
- * F1 Loader Animation Logic (Once per session)
- */
-function initEntranceAnimation() {
-    const loader = document.getElementById("loader");
-    const wrapper = document.getElementById("main-wrapper");
-    if (!loader) return;
 
-    const hasSeenLoader = sessionStorage.getItem("hasSeenLoader");
-
-    if (hasSeenLoader) {
-        loader.style.display = "none";
-        loader.style.pointerEvents = "none";
-        if (wrapper) {
-            wrapper.style.opacity = "1";
-            wrapper.style.transform = "scale(1)";
-        }
-        return;
-    }
-
-    // First visit: Show loader
-    document.body.style.overflow = "hidden";
-    if (loader) loader.style.pointerEvents = "auto";
-    if (wrapper) {
-        wrapper.style.opacity = "0";
-        wrapper.style.transform = "scale(1.05)";
-    }
-
-    const lights = document.querySelectorAll('.light.red');
-    const car = document.querySelector('.loader-car');
-    const track = document.querySelector('.loader-track');
-
-    // Setup typewriter text
-    const quoteText = document.querySelector('.quote-text');
-    const authorSpan = document.querySelector('.author');
-    let quoteChars = [];
-
-    if (quoteText) {
-        const text = quoteText.textContent.trim();
-        quoteText.textContent = '';
-        text.split('').forEach(char => {
-            const span = document.createElement('span');
-            span.textContent = char === ' ' ? '\u00A0' : char; // Keep spaces intact
-            span.style.opacity = "0";
-            quoteText.appendChild(span);
-            quoteChars.push(span);
-        });
-    }
-
-    const tl = gsap.timeline({
-        onComplete: () => {
-            document.body.style.overflow = "auto";
-            if (loader) {
-                loader.style.display = "none";
-            }
-            // Mark as seen
-            sessionStorage.setItem("hasSeenLoader", "true");
-
-            // Redirect smoothly to index if not already there
-            if (!window.location.pathname.endsWith("index.html") && window.location.pathname !== "/") {
-                window.location.href = "index.html";
-            }
-        }
-    });
-
-    // 1. Typewriter animation for the quote
-    if (quoteChars.length > 0) {
-        tl.to(quoteChars, {
-            opacity: 1,
-            duration: 0.05,
-            stagger: 0.03,
-            ease: "none"
-        });
-    }
-
-    // Fade in author slightly after quote starts
-    if (authorSpan) {
-        tl.to(authorSpan, { opacity: 1, duration: 0.5 }, "-=0.5");
-    }
-
-    // 2. Sequential lights on
-    if (lights.length > 0) {
-        tl.to(lights, {
-            backgroundColor: "#ff0000",
-            boxShadow: "0 0 20px #ff0000",
-            color: "#ffffff",
-            duration: 0.1,
-            stagger: 1 // 1 second interval between each light (5 lights = 4 seconds to last light)
-        }, "+=0.3"); // Wait a little after text
-
-        // 3. All lights out (Lights Out and Away We Go!)
-        tl.to(lights, {
-            backgroundColor: "#333",
-            boxShadow: "none",
-            color: "rgba(255, 255, 255, 0.2)",
-            duration: 0.1
-        }, "+=0.9"); // exactly 1 second after the last light turns on
-    }
-
-    // 4. F1 drives towards user (scale up) & track turns white
-    if (car) {
-        tl.to(car, {
-            opacity: 0,
-            scale: 6, // F1 speeds towards the camera
-            duration: 0.8,
-            ease: "power3.in"
-        }, "+=0.1"); // right as lights go out
-    }
-
-    if (track) {
-        tl.to(track, {
-            backgroundColor: "#ffffff",
-            opacity: 0.8,
-            duration: 0.6,
-            ease: "power2.inOut"
-        }, "<");
-    }
-
-    // 5. Entrance transition into site (loader fades and zooms)
-    tl.to(loader, {
-        opacity: 0,
-        scale: 1.5,
-        duration: 0.8,
-        ease: "power3.inOut"
-    });
-
-    // Hero visual anim
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroVisual) {
-        tl.from(heroVisual, {
-            x: 50,
-            opacity: 0,
-            duration: 1.5,
-            ease: "power3.out"
-        }, "-=0.8");
-    }
-
-    // Reveal content
-    if (wrapper) {
-        tl.to(wrapper, {
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-            ease: "expo.out",
-            clearProps: "transform"
-        }, "-=1");
-    }
-
-    // Hero staggered anim
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        tl.from(heroContent.children, {
-            y: 30,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out"
-        }, "-=0.8");
-    }
-}
 
 /**
  * MacOS Modal Logic

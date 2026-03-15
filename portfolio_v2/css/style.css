@@ -123,8 +123,6 @@ header {
     height: 44px;
     border-radius: 50%;
     overflow: hidden;
-    /* Removed border as requested earlier, adding subtle shadow */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
