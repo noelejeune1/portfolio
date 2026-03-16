@@ -312,28 +312,28 @@ section {
 
 .img-1 {
     transform: translateY(-20px) rotate(-5deg);
-    background-image: url('../img/projet/neymar2.jpg');
+    background-image: url("../img/projet/neymar affiche.webp");
     background-size: cover;
     background-position: center;
 }
 
 .img-2 {
     transform: translateY(20px) rotate(5deg);
-    background-image: url('../img/projet/leclerc2.jpg');
+    background-image: url("../img/projet/leclerc1.webp");
     background-size: cover;
     background-position: center;
 }
 
 .img-3 {
     transform: translateY(-10px) rotate(3deg);
-    background-image: url('../img/projet/locfit2.png');
+    background-image: url("../img/projet/bretagnepass.webp");
     background-size: cover;
     background-position: center;
 }
 
 .img-4 {
     transform: translateY(10px) rotate(-3deg);
-    background-image: url('../img/projet/dehwatch.jpg');
+    background-image: url("../img/projet/motion_liquid_glass.webp");
     background-size: cover;
     background-position: center;
 }

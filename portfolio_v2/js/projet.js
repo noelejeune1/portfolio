@@ -3,7 +3,7 @@ window.projectsData = {
     'infographie': {
         title: "Infographie - Fête de la Science",
         description: "Dans le cadre de la fête de la Science qui aura lieu dans toute la France en automne 2025, sur le sujet “Intelligence”. L’IUT de Lannion sera représenté par les départements à Lannion. Ce projet a pour but de rendre attrayant un sujet qui nous impacte tous.",
-        image: "./img/projet/infographieV2.png",
+        image: "./img/projet/infographie1.webp",
         link: "https://www.fetedelascience.fr/",
         missions: [
             "Identification de la cible",
@@ -19,7 +19,7 @@ window.projectsData = {
     'app_fitness': {
         title: "LocFit - SAE 301",
         description: "LocFit est un projet qui a pour but de créer une plate-forme de location de matériel de sport selon un profil d’utilisateur persona qui nous a été donné en amont. <br><br>Il nous a permis d’adapter notre site web en fonction de ses contraintes. Sur le site l’utilisateur peut s’authentifier avec un compte pour lui donner son rôle (client, admin, gérant).",
-        image: "./img/projet/locfit2.png",
+        image: "./img/projet/bretagnepass2.webp",
         link: "#",
         missions: [
             "Identification et compréhension des contraintes du persona",
@@ -73,7 +73,7 @@ window.projectsData = {
     'bretagne_pass': {
         title: "Bretagne Pass – Salle de spectacle dans le Trégor",
         description: "Le projet consiste à concevoir la maquette d’une application mobile et responsive qui permet de voir les programmations des principales salles de spectacles du Trégor. L’objectif est de faciliter l’accès à l’offre culturelle locale en permettant à l’utilisateur de trouver une idée de sortie et de réserver une ou plusieurs places depuis une interface claire, accessible et conviviale.",
-        image: "./img/projet/bretagnepass.png",
+        image: "./img/projet/bretagnepass.webp",
         link: "#",
         missions: [
             "Analyse de l’offre des principales salles de spectacles du Trégor (Carré Magique, An Dour Meur, Sémaphore, Théâtre de l’Arche, Le Sillon, Le SKOPE).",
@@ -92,7 +92,7 @@ window.projectsData = {
     'affiche_neymar': {
         title: "Affiche Sportive – Hommage à Neymar Jr ",
         description: "Ce projet personnel a pour but de concevoir une affiche promotionnelle type « poster collector » célébrant le passage du joueur Neymar Jr au FC Barcelone (période 2013-2017). L'objectif est de créer une composition visuelle forte qui hiérarchise l'information de manière dynamique : attirer l'attention par le visuel et le titrage, puis informer via une biographie et des statistiques clés, tout en respectant l'identité visuelle du club.",
-        image: "./img/projet/neymar2.png",
+        image: "./img/projet/neymar affiche.webp",
         link: "#",
         missions: [
             "Recherche et traitement de l'image : Sélection iconographique et détourage précis du joueur pour l'intégrer sur un fond composé.",
@@ -110,7 +110,7 @@ window.projectsData = {
     'sae_104': {
         title: "Court-métrage de Fiction – Thriller Psychologique (SAE 104)",
         description: "Dans le cadre de la SAE 104, ce projet consiste à concevoir et préparer le tournage d'une séquence de fiction narrative. L'objectif est de raconter une histoire courte avec une chute psychologique (plot twist), en maîtrisant le langage cinématographique (échelles de plans, raccords, lumière) et la préparation technique via un découpage précis. Le scénario met en scène Tom, un employé de bureau qui découvre une scène de crime avant de réaliser, face à son miroir, qu'il est lui-même le meurtrier.",
-        image: "./img/projet/SAE104_2.png",
+        image: "./img/projet/SAE104.webp",
         link: "#",
         missions: [
             "Écriture et Scénarisation : Conception d'un scénario basé sur la dualité et le trouble dissociatif de l'identité.",
@@ -127,7 +127,7 @@ window.projectsData = {
     'rendu_3d': {
         title: "Produire un bureau en 3d",
         description: "Réalisé dans le cadre de la R3.19 (BUT2 MMI), ce projet visait à reproduire une image de référence avec le plus haut degré de fidélité possible. L'objectif était de créer une scène 3D photoréaliste représentant une nature morte de bureau (livres, stylos, pot à crayons) en travaillant minutieusement les formes, les matériaux, l'éclairage et la composition pour correspondre à l'ambiance chaleureuse et texturée de l'original.",
-        image: "./img/projet/noelejeune-controle.png",
+        image: "./img/projet/noelejeune-controle.jpg",
         link: "#",
         missions: [
             "Modélisation polygone : Création précise des objets (carnets, stylos, pot) en respectant les proportions et les détails géométriques de l'image de référence.",
@@ -162,7 +162,7 @@ window.projectsData = {
     'affiche_leclerc': {
         title: "Affiche Sportive – Charles Leclerc (GP Belgique 2025)",
         description: "Ce projet personnel de design graphique a pour but de rappeler les performance de Charles Leclerc afin de predire ses résultats lors  du Grand Prix de Belgique 2025. L'objectif principal était de transformer des données brutes (statistiques de course) en une composition visuelle dynamique, rappelant les codes esthétiques de la Formule 1 et de la Scuderia Ferrari.",
-        image: "./img/projet/leclerc2.png",
+        image: "./img/projet/leclerc1.webp",
         link: "#",
         missions: [
             "Hiérarchisation des données : Sélection et mise en avant des statistiques clés (Position, Temps au tour, Arrêts aux stands).",
@@ -178,7 +178,7 @@ window.projectsData = {
     'motion_design': {
         title: "Motion Design – Apprentissage After Effects",
         description: "Ce projet personnel a été réalisé dans le but d'apprendre les fondamentaux du motion design sur Adobe After Effects. L'objectif était de se familiariser avec l'animation de formes, la gestion des images clés et le lissage de vitesse pour créer des transitions fluides et dynamiques.",
-        image: "./img/projet/money-aftereffects.png",
+        image: "./img/projet/money-aftereffects.webp",
         link: "https://youtu.be/hLKj00wx8sc",
         missions: [
             "Maîtrise de l'interface : Apprentissage des calques de formes, des masques et des compositions.",
@@ -188,6 +188,22 @@ window.projectsData = {
         ],
         competences: ["Animation 2D", "Motion Design", "Autonomie"],
         technologies: ["Motion Design", "After Effects"],
+        type: "Passion"
+    },
+
+    // PROJET 12 : Liquid Glass Motion
+    'motion_liquid': {
+        title: "Liquid Glass - Concept Motion",
+        description: "Expérimentation visuelle sur les effets de transparence et de distorsion liquide. Ce projet explore les possibilités de GSAP et de filtres SVG pour créer des interfaces fluides et organiques.",
+        image: "./img/projet/motion_liquid_glass.webp",
+        link: "#",
+        missions: [
+            "Conception de l'effet de distorsion organique",
+            "Mise en place de la timeline GSAP",
+            "Optimisation des performances de rendu"
+        ],
+        competences: ["GSAP", "Motion Design", "SVG Filters"],
+        technologies: ["Dév Web", "Motion Design"],
         type: "Passion"
     },
 };

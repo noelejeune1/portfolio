@@ -9,48 +9,109 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/about.css">
 </head>
 
 <body class="f1-theme">
     <div id="main-wrapper">
         <header>
             <div class="logo">
-                <a href="index.html">
-                    <img src="img/pdp.webp" alt="Noé Le Jeune">
+                <a href="./index.html">
+                    <img src="./img/pdp.webp" alt="Noé Le Jeune">
                 </a>
             </div>
             <nav>
-                <a href="apropos.html" class="active">À propos</a>
-                <a href="projet.html">Projets</a>
-                <a href="contact.html">Contact</a>
+                <a href="./apropos.html" class="active">À propos</a>
+                <a href="./projet.html">Projets</a>
+                <a href="./contact.html">Contact</a>
             </nav>
         </header>
 
-        <section class="page-header" style="padding-top: 10rem; text-align: center;">
-            <h1 class="impact-title">À PROPOS</h1>
-            <p style="max-width: 800px; margin: 2rem auto;">Passionné par le design et la technologie, je m'efforce de
-                créer des expériences numériques qui marquent les esprits.</p>
-        </section>
+        <main>
+            <!-- HERO SECTION: Split Image & Badges -->
+            <section class="about-hero">
+                <div class="hero-info-badges">
+                    <div class="badge badge-purple">19 ans</div>
+                    <div class="badge badge-lime">Noé</div>
+                    <div class="badge badge-red">SPORT </div>
+                </div>
 
-        <section class="about-details" style="padding: 5rem 5%;">
-            <div class="content" style="max-width: 1000px; margin: 0 auto; line-height: 1.8;">
-                <p>Étudiant en BUT MMI (Métiers du Multimédia et de l'Internet), je combine mes compétences techniques
-                    en développement front-end avec une vision artistique forte.</p>
-                <p>Mon univers visuel s'inspire de la précision de la Formule 1 et de l'élégance de l'écosystème Apple.
-                    Chaque projet est pour moi une occasion de repousser les limites de l'interactivité et du design.
-                </p>
-            </div>
-        </section>
+                <div class="hero-split-image">
+                    <div class="image-block block-1"></div>
+                    <div class="image-block block-2"></div>
+                    <div class="image-block block-3"></div>
+                    <div class="image-block block-4"></div>
+                </div>
+            </section>
 
-        <footer>
+            <!-- SKILLS SECTION: Software & Ticker -->
+            <section class="skills-software-section">
+                <!-- Moving Ticker -->
+                <div class="ticker-wrap">
+                    <div class="ticker">
+                        <div class="ticker__item">DEV • GRAPHISME • AUDIOVISUEL • DESIGN • DEV • UX/UI • MARKETING •
+                            GRAPHISME • AUDIOVISUEL • DESIGN • DEV • GRAPHISME • AUDIOVISUEL • DESIGN •</div>
+                        <div class="ticker__item">DEV • GRAPHISME • AUDIOVISUEL • DESIGN • DEV • UX/UI • MARKETING •
+                            GRAPHISME • AUDIOVISUEL • DESIGN • DEV • GRAPHISME • AUDIOVISUEL • DESIGN •</div>
+                    </div>
+                </div>
+
+                <!-- Software Grid Overlay -->
+                <div class="software-overlay">
+                    <div class="software-title-card">LOGICIELS</div>
+
+                    <div class="software-grid">
+                        <div class="software-item">
+                            <div class="software-icon-bg">
+                                <img src="./img/icon/adobe-photoshop-svgrepo-com.svg" alt="Photoshop">
+                            </div>
+                            <span class="software-name">Adobe Photoshop</span>
+                        </div>
+                        <div class="software-item">
+                            <div class="software-icon-bg">
+                                <img src="./img/icon/blender-svgrepo-com.svg" alt="Blender">
+                            </div>
+                            <span class="software-name">Blender</span>
+                        </div>
+                        <div class="software-item">
+                            <div class="software-icon-bg">
+                                <img src="./img/icon/wordpress-color-svgrepo-com.svg" alt="WordPress">
+                            </div>
+                            <span class="software-name">WordPress</span>
+                        </div>
+                        <div class="software-item">
+                            <div class="software-icon-bg">
+                                <img src="./img/icon/adobe-premiere-svgrepo-com.svg" alt="Premiere Pro">
+                            </div>
+                            <span class="software-name">Adobe Premiere Pro</span>
+                        </div>
+                        <div class="software-item">
+                            <div class="software-icon-bg">
+                                <img src="./img/icon/adobe-aftereffects.png" alt="After Effects">
+                            </div>
+                            <span class="software-name">Adobe After Effects</span>
+                        </div>
+                        <div class="software-item">
+                            <div class="software-icon-bg">
+                                <img src="./img/icon/figma-svgrepo-com.svg" alt="Figma">
+                            </div>
+                            <span class="software-name">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            style="padding: 4rem 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000; color: #fff;">
             <p>&copy; 2026 Noé Lejeune. Tous droits réservés.</p>
         </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
