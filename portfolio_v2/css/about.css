@@ -24,46 +24,156 @@
     position: relative;
 }
 
-/* Left side: Info badges */
-.hero-info-badges {
+/* Left side: Info Grid based on Screenshot Reference */
+.hero-info-grid {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto minmax(90px, 8vw) minmax(90px, 8vw);
     gap: 1.5rem;
     z-index: 10;
 }
 
-.badge {
-    padding: 1.5rem 3rem;
-    border-radius: 20px;
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
-    /* Bigger as per reference */
+.hero-info-grid > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none !important; /* Force remove any shadows */
+}
+
+#name-item {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+    justify-content: flex-start;
+}
+
+#name-item h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     text-transform: uppercase;
-    width: fit-content;
-    background: #ffffff;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1;
+}
+
+/* Hide def-item as it's not in the new design screenshot */
+#def-item {
+    display: none !important;
+}
+
+#info-item1 {
+    background-color: #8D3BDE; /* Adjusted purple to match the screen */
+    border-radius: 12px;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
     transition: transform 0.3s ease;
-    border: none;
+    width: 100px; /* Fixed width to make it square-like */
 }
 
-.badge:hover {
-    transform: scale(1.05) rotate(-2deg);
+#info-item1:hover {
+    transform: scale(1.05); /* Removed rotation */
 }
 
-.badge-purple {
-    background: var(--color-purple);
-    color: #fff;
+#info-item1 p {
+    color: var(--color-white);
+    font-family: 'Anton', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.badge-lime {
-    background: var(--color-lime);
-    color: #000;
+#info-item2 {
+    background-color: #FFEA00; /* Bright Yellow */
+    grid-column: 2 / 5;
+    grid-row: 3 / 4;
+    border-radius: 12px 0 0 12px;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); /* Adjusted clip-path for slanted right edge */
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+    transition: transform 0.3s ease;
+    margin-left: -0.5rem; /* Slight overlap or pull back if needed, but flex gap handles it well. Let's keep gap. */
 }
 
-.badge-red {
-    background: var(--color-red);
-    color: #fff;
+#info-item2:hover {
+    transform: scale(1.02) translateX(5px);
+}
+
+#info-item2 p {
+    color: var(--text-primary);
+    font-family: 'Anton', sans-serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    text-align: left;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+#info-item3 {
+    background-color: #A6051A; /* Dark Red */
+    grid-column: 1 / 5;
+    grid-row: 4 / 5;
+    clip-path: polygon(0 0, 92% 0%, 82% 100%, 0% 100%); /* Adjusted slanted edge */
+    border-radius: 12px 0 0 12px;
+    height: 100%;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+#info-item3:hover {
+    transform: scale(1.02) translateX(5px);
+}
+
+#info-item3 p {
+    color: var(--color-white);
+    font-family: 'Anton', sans-serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    text-align: left;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+@media screen and (max-width: 1024px) {
+    .about-hero {
+        flex-direction: column;
+        padding-top: 8rem;
+    }
+    .hero-info-grid {
+        width: 100%;
+        max-width: 800px;
+        grid-template-rows: auto 100px 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-info-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    #info-item1 {
+        width: 100%;
+    }
+    #info-item2, #info-item3 {
+        clip-path: none;
+        border-radius: 12px;
+        justify-content: center;
+        padding: 1.5rem;
+        margin-left: 0;
+    }
+    #info-item2 p, #info-item3 p {
+        text-align: center;
+    }
 }
 
 /* Right side: Split image blocks */
@@ -78,6 +188,10 @@
     max-width: 1000px;
     /* Controlled width for better math */
     margin: 0 auto;
+    cursor: pointer;
+    overflow: hidden; /* Added to contain overlay */
+    border-radius: 40px;
+    align-self: flex-start; /* Ensure it stays at the top alongside the info grid */
 }
 
 .image-block {
@@ -89,6 +203,8 @@
     transform: skewX(-15deg);
     border-radius: 40px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
 }
 
 .image-block::after {
@@ -104,6 +220,8 @@
     background-repeat: no-repeat;
     transform: skewX(15deg);
     /* Counter-skew */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
 }
 
 /* Precise split alignment centered on the face */
@@ -123,129 +241,276 @@
     background-position: calc(50% - 285px) center;
 }
 
-/* =========================================================================
-   SKILLS SECTION (Software + Ticker)
-   ========================================================================= */
+/* Bio Text Overlay */
+.bio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.85); /* Dark semi-transparent overlay */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    border-radius: 40px;
+}
+
+.bio-overlay p {
+    color: var(--color-white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+.bio-overlay p:last-child {
+    margin-bottom: 0;
+}
+
+/* Hover Interaction Strategy */
+/* When hovering over the container: 
+   - Darken the images 
+   - Reduce the skew slightly for a cleaner text read area
+   - Bring up the text overlay
+*/
+.hero-split-image:hover .image-block {
+    transform: skewX(-5deg); /* Less skew on hover */
+    box-shadow: none;
+}
+
+.hero-split-image:hover .image-block::after {
+    transform: skewX(5deg);
+    opacity: 0.15; /* Dim the face extremely to let text shine */
+    filter: blur(5px);
+}
+
+.hero-split-image:hover .bio-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Allow selecting text */
+}
+
+/* Update clip path on mobile for correct grid display over split-image */
+@media screen and (max-width: 1024px) {
+    .hero-split-image {
+        width: 100%;
+        height: 500px;
+    }
+    .bio-overlay {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-split-image {
+        height: 400px;
+    }
+    .image-block {
+        transform: skewX(0);
+        border-radius: 20px;
+    }
+    .image-block::after {
+        transform: skewX(0);
+        background-size: cover;
+        background-position: center;
+    }
+    .hero-split-image:hover .image-block {
+        transform: skewX(0);
+    }
+    .hero-split-image:hover .image-block::after {
+        transform: skewX(0);
+    }
+    .bio-overlay {
+        padding: 1.5rem;
+        border-radius: 20px;
+        overflow-y: auto;
+    }
+    .bio-overlay p {
+        font-size: 0.85rem;
+    }
+}
 
 /* =========================================================================
-   SKILLS SECTION (Domains & Software)
+   SKILLS SECTION (Software Banner)
    ========================================================================= */
 
-.domains-software-section {
+.software-section {
     position: relative;
-    padding: 10rem 0;
-    background: #000; /* Dark background to match the site */
-    overflow: hidden;
+    padding: 10rem 0 5rem;
+    background: #000;
+    /* Dark background to match the site */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 80vh; /* Minimum height to see the whole effect */
+    width: 100%;
 }
 
-/* Fixed Watermark Text */
-.domains-watermark {
+/* Badge Logiciels (Cream colored, wiggling, absolute positioned) */
+.software-badge {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Anton', sans-serif;
-    font-size: 15rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.03); /* Extremely subtle white text */
-    white-space: nowrap;
-    z-index: 1;
-    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F3E4D6;
     text-align: center;
-    line-height: 0.9;
+    border-radius: 20px;
+    z-index: 5;
+    padding: 0.8rem 2.5rem;
+    animation: 6.5s wiggle infinite ease-in-out;
+    top: 1rem;
+    /* Shift upwards to overlap the banner */
+    left: 12%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Ticker Styles */
-.ticker-wrap {
+.software-badge h2 {
+    color: #1e2329;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(2deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* The Banner */
+.software-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    padding: 1.5rem 0;
+    width: 100vw;
+    background-color: #D9FF00;
+    /* As requested matching previous design */
+}
+
+/* Tickers inside the Green Banner */
+.software-ticker {
     width: 100%;
     overflow: hidden;
-    padding: 1.5rem 0;
-    position: absolute;
-    background: var(--color-lime); /* Yellow bands */
+    background: transparent;
     z-index: 10;
 }
 
-.ticker-top {
-    top: 5%;
-    transform: rotate(-1.5deg) scale(1.05); /* Slightly slanted */
-}
-
-.ticker-bottom {
-    bottom: 5%;
-    transform: rotate(1deg) scale(1.05); /* Mirrored slant */
+.software-ticker.bottom {
+    margin-top: 2rem;
 }
 
 .ticker {
     display: flex;
     white-space: nowrap;
-    animation: ticker 30s linear infinite;
+    animation: tickerMove 30s linear infinite;
 }
 
-.ticker-bottom .ticker {
-    animation-direction: reverse; /* Opposite movement */
+.ticker-reverse {
+    animation-direction: reverse;
+    /* Opposite movement for bottom */
 }
 
 .ticker__item {
-    font-family: 'Anton', sans-serif; /* Impact font for tickers */
+    font-family: 'Anton', sans-serif;
     font-weight: 500;
-    font-size: 3rem;
-    color: #000;
-    padding: 0 4rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #1e2329;
+    /* Dark text to contrast lime */
+    padding: 0 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
+    line-height: 1;
 }
 
-@keyframes ticker {
+@keyframes tickerMove {
     0% {
         transform: translate3d(0, 0, 0);
     }
+
     100% {
         transform: translate3d(-50%, 0, 0);
     }
 }
 
-/* Software Grid Center */
-.software-overlay {
-    position: relative;
-    z-index: 20;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 5%;
-}
-
+/* Layout for the Software Grid */
 .software-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3rem;
+    display: grid;
+    width: 100%;
+    max-width: 1400px;
+    margin: 2rem auto;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+    z-index: 20;
+    padding: 0 5%;
 }
 
 .software-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease;
 }
 
 .software-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px) scale(1.05);
+}
+
+.software-item p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    color: #1e2329;
+    /* Dark color inside green banner */
+    margin-top: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05vw;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 .software-icon-bg {
-    width: 160px;
-    height: 160px;
-    background: #1a1a1a;
-    border-radius: 40px; /* Rounded pill/square */
+    width: clamp(80px, 12vw, 160px);
+    height: clamp(80px, 12vw, 160px);
+    background: #1e2329;
+    /* Dark square for icons */
+    border-radius: 24px;
+    /* Rounded pill/square */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
-    box-shadow: none; /* Flat design as requested */
+    padding: clamp(15px, 2.5vw, 40px);
+    box-shadow: none;
+    /* Flat design as requested */
 }
 
 .software-icon-bg img {
@@ -254,46 +519,80 @@
     object-fit: contain;
 }
 
+/* Link area at the bottom */
+.vers-about2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    width: 100%;
+    max-width: 1200px;
+    gap: 1.5rem;
+}
+
+.vers-about2 hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid rgba(255, 247, 239, 0.3);
+    margin: 0;
+    max-width: 400px;
+}
+
+.vers-about2 a {
+    color: #FFF7EF;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: 0.3s ease;
+    border: solid 1.5px rgba(255, 247, 239, 0.5);
+    border-radius: 50px;
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+}
+
+.vers-about2 a:hover {
+    background-color: var(--color-lime);
+    color: #1E2329;
+    font-weight: 600;
+    border-color: var(--color-lime);
+}
+
 /* Responsive Adjustments */
 @media screen and (max-width: 1024px) {
-    .domains-watermark {
-        font-size: 10rem;
+    .software-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
     }
-    .software-icon-bg {
-        width: 120px;
-        height: 120px;
-        border-radius: 30px;
-        padding: 20px;
-    }
-    .ticker__item {
-        font-size: 2rem;
+
+    .software-badge {
+        left: 5%;
+        top: 5rem;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .domains-software-section {
-        padding: 6rem 0;
+    .software-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
-    .domains-watermark {
-        font-size: 6rem;
+
+    .software-badge h2 {
+        font-size: 2.5rem;
     }
-    .software-icon-bg {
-        width: 100px;
-        height: 100px;
-        border-radius: 25px;
-        padding: 15px;
+
+    .software-badge {
+        padding: 0.5rem 1.5rem;
     }
-    .ticker__item {
-        font-size: 1.5rem;
-        padding: 0 2rem;
+
+    .vers-about2 {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 5%;
     }
-    .ticker-wrap {
-        padding: 1rem 0;
-    }
-    .ticker-top {
-        top: 2%;
-    }
-    .ticker-bottom {
-        bottom: 2%;
+
+    .vers-about2 hr {
+        display: none;
+        /* Hide lines on mobile for cleaner look */
     }
 }

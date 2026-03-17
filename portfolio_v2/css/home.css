@@ -326,14 +326,14 @@ section {
 
 .img-3 {
     transform: translateY(-10px) rotate(3deg);
-    background-image: url("../img/projet/bretagnepass.webp");
+    background-image: url("../img/projet/motion_liquid_glass2.webp");
     background-size: cover;
     background-position: center;
 }
 
 .img-4 {
     transform: translateY(10px) rotate(-3deg);
-    background-image: url("../img/projet/motion_liquid_glass.webp");
+    background-image: url("../img/projet/motion-design.webp");
     background-size: cover;
     background-position: center;
 }

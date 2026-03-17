@@ -32,10 +32,21 @@
         <main>
             <!-- HERO SECTION: Split Image & Badges -->
             <section class="about-hero">
-                <div class="hero-info-badges">
-                    <div class="badge badge-purple">19 ans</div>
-                    <div class="badge badge-lime">Noé</div>
-                    <div class="badge badge-red">SPORT </div>
+                <div class="hero-info-grid">
+                    <div id="def-item">
+                        <h1>NOÉ LEJEUNE</h1>
+                    </div>
+
+
+                    <div id="info-item1">
+                        <p>19<br>ans</p>
+                    </div>
+                    <div id="info-item2">
+                        <p>Lannion</p>
+                    </div>
+                    <div id="info-item3">
+                        <p>Sportif</p>
+                    </div>
                 </div>
 
                 <div class="hero-split-image">
@@ -43,66 +54,86 @@
                     <div class="image-block block-2"></div>
                     <div class="image-block block-3"></div>
                     <div class="image-block block-4"></div>
+                    
+                    <div class="bio-overlay">
+                        <p>Passionné par le sport et l'univers digital, je transforme ma créativité dans des projets concrets, qui permettent de mettre en évidence mes compétences. Actuellement en formation BUT Métiers du Multimédia et de l'Internet (MMI), je développe une polyvalence technique et créative dans plusieurs domaines importants.</p>
+                        <p>J'ai acquis des compétences clés, en communication et en création numérique, qui nourrissent aujourd'hui mes principaux projets, qu'ils soient personnels ou universitaires.</p>
+                        <p>Cette formation a affiné mon esprit critique : je le nourris aujourd'hui par une veille constante pour créer des visuels impactants. Mon objectif est simple : proposer une créativité jeune et originale, qui reflète ma vision tout en répondant précisément à des besoins clairs.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- SKILLS SECTION: Domains & Software -->
-            <section class="domains-software-section">
-                <!-- Fixed Watermark Text -->
-                <div class="domains-watermark">
-                    DEV • GRAPHISME • AUDIOVISUEL • 3D 
+            <!-- SKILLS SECTION: Software -->
+            <section class="software-section" id="software">
+                <!-- Badge overlapping the top -->
+                <div class="impact-title">
+                    <h2>Logiciels</h2>
                 </div>
 
-                <!-- First Moving Ticker (Top) -->
-                <div class="ticker-wrap ticker-top">
-                    <div class="ticker">
-                        <div class="ticker__item">DEV • GRAPHISME • AUDIOVISUEL • 3D • DEV • GRAPHISME • AUDIOVISUEL • 3D •</div>
-                        <div class="ticker__item">DEV • GRAPHISME • AUDIOVISUEL • 3D • DEV • GRAPHISME • AUDIOVISUEL • 3D •</div>
+                <div class="software-banner" id="software-banner">
+                    <!-- Top Ticker -->
+                    <div class="software-ticker">
+                        <div class="ticker">
+                            <div class="ticker__item">DESIGN GRAPHIQUE • DEV • AUDIOVISUEL • 3D • MARKETING •</div>
+                            <div class="ticker__item">DESIGN GRAPHIQUE • DEV • AUDIOVISUEL • 3D • MARKETING •</div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Software Grid Center -->
-                <div class="software-overlay">
+                    <!-- Software Grid -->
                     <div class="software-grid">
-                        <div class="software-item">
+                        <div class="software-item" id="ps">
                             <div class="software-icon-bg">
-                                <img src="./img/icon/adobe-photoshop-svgrepo-com.svg" alt="Photoshop">
+                                <img src="./img/icon/adobe-photoshop-svgrepo-com.svg" alt="Adobe Photoshop"
+                                    draggable="false">
                             </div>
+                            <p>Adobe Photoshop</p>
                         </div>
-                        <div class="software-item">
+                        <div class="software-item" id="ai">
                             <div class="software-icon-bg">
-                                <img src="./img/icon/adobe-illustrator.png" alt="Illustrator">
+                                <img src="./img/icon/adobe-illustrator.png" alt="Adobe Illustrator" draggable="false">
                             </div>
+                            <p>Adobe Illustrator</p>
                         </div>
-                        <div class="software-item">
+                        <div class="software-item" id="id">
                             <div class="software-icon-bg">
-                                <img src="./img/icon/adobe-indesign.png" alt="InDesign">
+                                <img src="./img/icon/adobe-indesign.png" alt="Adobe InDesign" draggable="false">
                             </div>
+                            <p>Adobe InDesign</p>
                         </div>
-                        <div class="software-item">
+                        <div class="software-item" id="pr">
                             <div class="software-icon-bg">
-                                <img src="./img/icon/adobe-premiere-svgrepo-com.svg" alt="Premiere Pro">
+                                <img src="./img/icon/adobe-premiere-svgrepo-com.svg" alt="Adobe Premiere Pro"
+                                    draggable="false">
                             </div>
+                            <p>Adobe Premiere Pro</p>
                         </div>
-                        <div class="software-item">
+                        <div class="software-item" id="ae">
                             <div class="software-icon-bg">
-                                <img src="./img/icon/adobe-aftereffects.png" alt="After Effects">
+                                <img src="./img/icon/adobe-aftereffects.png" alt="Adobe After Effects"
+                                    draggable="false">
                             </div>
+                            <p>Adobe After Effects</p>
                         </div>
-                        <div class="software-item">
+                        <div class="software-item" id="fg">
                             <div class="software-icon-bg">
-                                <img src="./img/icon/figma-svgrepo-com.svg" alt="Figma">
+                                <img src="./img/icon/figma-svgrepo-com.svg" alt="Figma" draggable="false">
                             </div>
+                            <p>Figma</p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Ticker -->
+                    <div class="software-ticker bottom">
+                        <div class="ticker ticker-reverse">
+                            <div class="ticker__item">DESIGN GRAPHIQUE • DEV • AUDIOVISUEL • 3D • MARKETING •</div>
+                            <div class="ticker__item">DESIGN GRAPHIQUE • DEV • AUDIOVISUEL • 3D • MARKETING •</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Second Moving Ticker (Bottom, Mirrored) -->
-                <div class="ticker-wrap ticker-bottom">
-                    <div class="ticker">
-                        <div class="ticker__item">DEV • GRAPHISME • AUDIOVISUEL • 3D • DEV • GRAPHISME • AUDIOVISUEL • 3D •</div>
-                        <div class="ticker__item">DEV • GRAPHISME • AUDIOVISUEL • 3D • DEV • GRAPHISME • AUDIOVISUEL • 3D •</div>
-                    </div>
+                <div class="vers-about2">
+                    <hr><a href="./projet.html">En savoir plus sur mes compétences</a>
+                    <hr>
                 </div>
             </section>
 
