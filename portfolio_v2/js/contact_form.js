@@ -4,34 +4,57 @@ const EMAILJS_CONFIG = {
     TEMPLATE_ID: 'template_d35a1td'
 };
 
+// Anti-spam : délai minimum entre deux envois (ms)
+const RATE_LIMIT_MS = 60000;
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contact-form');
-    const fadeInElements = document.querySelectorAll('.fade-in');
 
     // Initialize EmailJS with public key
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
     }
 
-    // Fade in animation
-    setTimeout(() => {
-        fadeInElements.forEach(el => el.classList.add('fade-in'));
-    }, 100);
-
     if (form) {
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
+            // Honeypot check : si rempli, c'est un bot
+            const honeypot = document.getElementById('honeypot');
+            if (honeypot && honeypot.value !== '') {
+                // Simuler un succès pour ne pas alerter le bot
+                showNotification('Message envoyé !', 'Votre message a été envoyé avec succès.', 'success');
+                form.reset();
+                return;
+            }
+
+            // Rate limiting : empêcher les envois multiples rapides
+            const lastSent = localStorage.getItem('contact_last_sent');
+            if (lastSent && Date.now() - parseInt(lastSent, 10) < RATE_LIMIT_MS) {
+                const remaining = Math.ceil((RATE_LIMIT_MS - (Date.now() - parseInt(lastSent, 10))) / 1000);
+                showNotification(
+                    'Trop rapide !',
+                    `Veuillez patienter ${remaining} secondes avant de renvoyer un message.`,
+                    'error'
+                );
+                return;
+            }
+
             const formData = new FormData(form);
             const templateParams = {
-                from_email: formData.get('email'),
-                title: formData.get('subject'),
-                message: formData.get('message'),
+                from_email: formData.get('email').trim(),
+                title: formData.get('subject').trim(),
+                message: formData.get('message').trim(),
                 to_email: 'noe.lejeune3@gmail.com'
             };
 
+            // Validation basique côté client
+            if (!templateParams.from_email || !templateParams.title || !templateParams.message) {
+                showNotification('Champs manquants', 'Veuillez remplir tous les champs.', 'error');
+                return;
+            }
+
             try {
-                // Send email using EmailJS
                 const response = await emailjs.send(
                     EMAILJS_CONFIG.SERVICE_ID,
                     EMAILJS_CONFIG.TEMPLATE_ID,
@@ -40,17 +63,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 console.log('Email sent successfully:', response);
 
-                // Show success notification
+                // Enregistrer l'heure d'envoi pour le rate limiting
+                localStorage.setItem('contact_last_sent', Date.now().toString());
+
                 showNotification(
                     'Message envoyé !',
                     'Votre message a été envoyé avec succès. Redirection en cours...',
                     'success'
                 );
 
-                // Reset form
                 form.reset();
 
-                // Redirect to home page after 3 seconds
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 3000);
@@ -67,15 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Show Mac-style notification
 function showNotification(title, message, type = 'success') {
-    // Remove any existing notifications
     const existingNotif = document.querySelector('.notification');
     if (existingNotif) {
         existingNotif.remove();
     }
 
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
 
@@ -92,12 +112,10 @@ function showNotification(title, message, type = 'success') {
 
     document.body.appendChild(notification);
 
-    // Trigger animation
     setTimeout(() => {
         notification.classList.add('show');
     }, 10);
 
-    // Auto hide after 5 seconds
     setTimeout(() => {
         notification.classList.add('hide');
         setTimeout(() => {
