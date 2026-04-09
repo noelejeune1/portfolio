@@ -181,17 +181,15 @@
     flex: 1.5;
     display: flex;
     gap: 15px;
-    /* Reduced gap for a tighter look */
     justify-content: center;
     height: 650px;
     position: relative;
     max-width: 1000px;
-    /* Controlled width for better math */
     margin: 0 auto;
     cursor: pointer;
-    overflow: hidden; /* Added to contain overlay */
-    border-radius: 40px;
-    align-self: flex-start; /* Ensure it stays at the top alongside the info grid */
+    /* Removed overflow: hidden and border-radius so blocks extend freely */
+    overflow: visible;
+    align-self: flex-start;
 }
 
 .image-block {
@@ -200,9 +198,9 @@
     background-color: #0d0d0d;
     position: relative;
     overflow: hidden;
-    transform: skewX(-15deg);
-    border-radius: 40px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    /* No skewX — straight vertical rectangles */
+    border-radius: 28px;
+    /* No box-shadow */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
 }
@@ -216,10 +214,8 @@
     right: -200%;
     background-image: url('../img/projet/pdp_transparent.webp');
     background-size: 800px auto;
-    /* Constant size for perfect alignment */
     background-repeat: no-repeat;
-    transform: skewX(15deg);
-    /* Counter-skew */
+    /* No counter-skew needed since parent has no skew */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
 }
@@ -283,20 +279,19 @@
    - Bring up the text overlay
 */
 .hero-split-image:hover .image-block {
-    transform: skewX(-5deg); /* Less skew on hover */
+    /* Subtle lift on hover, no skew change */
     box-shadow: none;
 }
 
 .hero-split-image:hover .image-block::after {
-    transform: skewX(5deg);
-    opacity: 0.15; /* Dim the face extremely to let text shine */
+    opacity: 0.15;
     filter: blur(5px);
 }
 
 .hero-split-image:hover .bio-overlay {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto; /* Allow selecting text */
+    pointer-events: auto;
 }
 
 /* Update clip path on mobile for correct grid display over split-image */

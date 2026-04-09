@@ -185,7 +185,7 @@ nav a:hover {
 
 .primary-btn {
     background-color: var(--color-ferrari-red);
-    color: var(--color-white);
+    color: var(--color-white) !important;
     border: none;
     box-shadow: 0 10px 20px rgba(166, 5, 26, 0.2);
     text-transform: uppercase;
@@ -195,7 +195,7 @@ nav a:hover {
 
 .primary-btn:hover {
     background-color: var(--color-modena-yellow);
-    color: var(--color-carbon-black);
+    color: var(--color-carbon-black) !important;
     transform: translateY(-2px) skewX(-5deg);
     box-shadow: 0 15px 30px rgba(255, 235, 0, 0.3);
 }

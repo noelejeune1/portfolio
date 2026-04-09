@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noé Le Jeune - Portfolio</title>
+    <title>En Maintenance - Noé Le Jeune</title>
 
     <!-- Google Fonts: Anton (Headers), Montserrat (Body), Dancing Script (Signature) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,171 +15,36 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/maintenance.css">
 </head>
 
 <body>
+    <!-- Background Abstract Shapes -->
+    <div class="bg-shape shape-bordeaux"></div>
+    <div class="bg-shape shape-gold"></div>
 
     <!-- MAIN CONTENT -->
-    <div>
-        <!-- HEADER -->
-        <header>
-            <div class="logo">
-                <a href="./index.html">
-                    <img src="./img/pdp.webp" alt="Noé Le Jeune">
-                </a>
-            </div>
-            <nav>
-                <a href="./apropos.html">À propos</a>
-                <a href="./projet.html">Projets</a>
-                <a href="./contact.html">Contact</a>
-            </nav>
-        </header>
+    <div class="maintenance-container">
+        <div class="maintenance-logo">
+            <img src="./img/pdp.webp" alt="Noé Le Jeune">
+        </div>
 
-        <!-- HERO SECTION -->
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Créer une communication <span id="typewriter-text" class="highlight"></span><span
-                        class="typewriter-cursor"></span></h1>
-                <p>Jeune développeur & designer passionné par les interfaces modernes, inspirées par
-                    l'écosystème Apple.</p>
-                <a href="./projet.html" class="btn primary-btn">Découvrir mes projets</a>
-            </div>
-            <!-- Decorative 3D or abstract element placeholder -->
-            <div class="hero-visual">
-                <div class="abstract-shape shape-1"></div>
-                <div class="abstract-shape shape-2"></div>
-            </div>
-        </section>
+        <h1 class="impact-title">À BIENTÔT</h1>
 
-        <!-- CATEGORIES SECTION -->
-        <section id="categories">
-            <div class="section-header">
-                <h2 class="impact-title">DOMAINES</h2>
-            </div>
-            <div class="categories-grid">
-                <a href="./projet.html?filter=MMI" class="category-card" data-category="MMI">
-                    <div class="category-icon">MMI</div>
-                    <h3>Formation MMI</h3>
-                    <p>Projets réalisés durant mon cursus universitaire.</p>
-                </a>
-                <a href="./projet.html?filter=Perso" class="category-card" data-category="Perso">
-                    <div class="category-icon">Perso</div>
-                    <h3>Projets Persos</h3>
-                    <p>Créations réalisées sur mon temps libre par curiosité.</p>
-                </a>
-                <a href="./projet.html?filter=Passion" class="category-card" data-category="Passion">
-                    <div class="category-icon">Passion</div>
-                    <h3>Mes Passions</h3>
-                    <p>Explorez mes univers créatifs et expérimentaux.</p>
-                </a>
-            </div>
-        </section>
+        <p class="maintenance-text">
+            Mon portfolio est actuellement en cours de refonte pour vous offrir une meilleure expérience.<br>
+            Je serai de retour très prochainement avec de nouveaux projets et un design tout neuf.
+        </p>
 
-        <!-- ABOUT SECTION -->
-        <section id="about">
-            <div class="about-container">
-                <div class="about-header">
-                    <h2 class="impact-title">À PROPOS DE MOI</h2>
-                    <p class="signature-text">Noé Le Jeune</p>
-                </div>
+        <div class="loader-spinner"></div>
 
-                <div class="about-content">
-                    <div class="about-visual">
-                        <div class="glow-effect"></div>
-                        <div class="image-grid">
-                            <div class="grid-img img-1"></div>
-                            <div class="grid-img img-2"></div>
-                            <div class="grid-img img-3"></div>
-                            <div class="grid-img img-4"></div>
-                        </div>
-                    </div>
-
-                    <div class="about-text">
-                        <p class="impact-title">
-                            Designer Créatif
-                        </p>
-                        <p class="main-description">
-                            Actuellement en BUT MMI, je développe mes compétences et travaille sur des projets variés
-                            qui allient esthétisme et fonctionnalité.
-                        </p>
-                        <a href="./apropos.html" class="btn en-savoir-plus">En savoir plus →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- CONTACT SECTION -->
-        <section id="contact">
-            <h2>Prêt à collaborer ?</h2>
-            <p>Discutons de votre prochain projet créatif.</p>
-            <a href="./contact.html" class="btn secondary-btn">Me Contacter</a>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <p>&copy; 2026 Noé Lejeune. Tous droits réservés.</p>
-        </footer>
-    </div>
-
-    <!-- MAC OS PROJECT MODAL (Hidden by default) -->
-    <div id="project-modal" class="modal-overlay">
-        <div class="mac-window">
-            <div class="mac-titlebar">
-                <div class="mac-buttons">
-                    <div class="mac-btn close-btn" id="close-modal"></div>
-                    <div class="mac-btn minimize-btn"></div>
-                    <div class="mac-btn maximize-btn"></div>
-                </div>
-                <div class="mac-title">Détails du Projet</div>
-            </div>
-            <div class="mac-content">
-                <div class="modal-grid">
-                    <div class="modal-left">
-                        <h2 id="modal-project-title">Titre du projet</h2>
-                        <div id="modal-project-image" class="placeholder-image large"></div>
-                        <p id="modal-project-desc">Description</p>
-                    </div>
-                    <div class="modal-right">
-                        <div class="modal-info-section">
-                            <h4>Missions</h4>
-                            <ul id="modal-project-missions" class="missions-list">
-                                <!-- Dynamic missions -->
-                            </ul>
-                        </div>
-                        <div class="modal-info-section">
-                            <h4>Compétences</h4>
-                            <div id="modal-project-competences" class="tag-cloud">
-                                <!-- Dynamic competences -->
-                            </div>
-                        </div>
-                        <div class="modal-info-section">
-                            <h4>Technologies</h4>
-                            <div id="modal-project-technologies" class="tag-cloud">
-                                <!-- Dynamic technologies -->
-                            </div>
-                        </div>
-                        <div class="modal-info-footer">
-                            <a href="#" id="modal-project-link" target="_blank" class="btn primary-btn small">Voir le
-                                projet</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style="margin-top: 3rem;">
+            <a href="mailto:noe.lejeune3@gmail.com" class="btn primary-btn">
+                Me contacter
+            </a>
         </div>
     </div>
 
-
-    <!-- GSAP Libraries via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <!-- Custom JS -->
-    <script src="./js/projet.js"></script>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>
