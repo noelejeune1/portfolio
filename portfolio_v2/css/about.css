@@ -203,8 +203,12 @@
     transform: skewX(-15deg);
     border-radius: 40px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.5s ease,
+                box-shadow 0.5s ease,
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
+    cursor: pointer;
 }
 
 .image-block::after {
@@ -276,27 +280,53 @@
     margin-bottom: 0;
 }
 
-/* Hover Interaction Strategy */
-/* When hovering over the container: 
-   - Darken the images 
-   - Reduce the skew slightly for a cleaner text read area
-   - Bring up the text overlay
-*/
-.hero-split-image:hover .image-block {
-    transform: skewX(-5deg); /* Less skew on hover */
-    box-shadow: none;
+/* ── Hover par carte individuelle ── */
+
+/* La carte survolée s'élargit */
+.image-block:hover {
+    flex: 2.5;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    transform: skewX(-8deg);
 }
 
-.hero-split-image:hover .image-block::after {
-    transform: skewX(5deg);
-    opacity: 0.15; /* Dim the face extremely to let text shine */
-    filter: blur(5px);
+/* Les cartes non survolées rétrécissent légèrement */
+.hero-split-image:has(.image-block:hover) .image-block:not(:hover) {
+    flex: 0.6;
+    opacity: 0.5;
 }
 
-.hero-split-image:hover .bio-overlay {
+/* La photo de la carte survolée se dé-skew et reste nette */
+.image-block:hover::after {
+    transform: skewX(8deg);
+    opacity: 0.2;
+    filter: blur(4px);
+}
+
+/* Afficher la bio overlay quand une carte est survolée */
+.hero-split-image:has(.image-block:hover) .bio-overlay {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto; /* Allow selecting text */
+    pointer-events: auto;
+}
+
+/* Fallback : hover sur le conteneur entier (navigateurs sans :has()) */
+@supports not (selector(:has(*))) {
+    .hero-split-image:hover .image-block {
+        transform: skewX(-5deg);
+        box-shadow: none;
+    }
+
+    .hero-split-image:hover .image-block::after {
+        transform: skewX(5deg);
+        opacity: 0.15;
+        filter: blur(5px);
+    }
+
+    .hero-split-image:hover .bio-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
 }
 
 /* Update clip path on mobile for correct grid display over split-image */
@@ -323,10 +353,11 @@
         background-size: cover;
         background-position: center;
     }
-    .hero-split-image:hover .image-block {
+    .image-block:hover {
         transform: skewX(0);
+        flex: 2;
     }
-    .hero-split-image:hover .image-block::after {
+    .image-block:hover::after {
         transform: skewX(0);
     }
     .bio-overlay {
@@ -501,22 +532,23 @@
 .software-icon-bg {
     width: clamp(80px, 12vw, 160px);
     height: clamp(80px, 12vw, 160px);
-    background: #1e2329;
-    /* Dark square for icons */
-    border-radius: 24px;
-    /* Rounded pill/square */
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(15px, 2.5vw, 40px);
-    box-shadow: none;
-    /* Flat design as requested */
+    padding: clamp(8px, 1.5vw, 20px);
 }
 
 .software-icon-bg img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.software-item:hover .software-icon-bg img {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
 }
 
 /* Link area at the bottom */
