@@ -1,128 +1,91 @@
 /* =========================================================================
-   MAINTENANCE PAGE STYLES
+   BACKGROUND SHAPES
    ========================================================================= */
+.bg-shape {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
 
+.shape-bordeaux {
+    width: 600px;
+    height: 600px;
+    background: var(--color-bordeaux);
+    bottom: -200px;
+    left: -200px;
+}
+
+.shape-gold {
+    width: 500px;
+    height: 500px;
+    background: var(--color-gold);
+    bottom: -150px;
+    right: -150px;
+}
+
+/* =========================================================================
+   MAINTENANCE CONTAINER
+   ========================================================================= */
 body {
-    background-color: var(--bg-primary); /* Using light theme */
-    color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
-    position: relative;
 }
 
 .maintenance-container {
+    position: relative;
+    z-index: 1;
     text-align: center;
-    z-index: 10;
+    max-width: 600px;
     padding: 2rem;
-    max-width: 800px;
-    animation: fadeIn 1s ease-out forwards;
 }
 
+/* =========================================================================
+   LOGO / PHOTO DE PROFIL
+   ========================================================================= */
 .maintenance-logo {
     margin-bottom: 2rem;
 }
 
 .maintenance-logo img {
-    width: 160px;
-    height: 160px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: var(--color-white);
-    padding: 12px;
-    border: none !important;
-    outline: none !important;
-}
-
-.impact-title {
-    color: var(--text-primary);
-    font-size: clamp(3rem, 10vw, 7rem);
-    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(166, 5, 26, 0.2);
     position: relative;
+    z-index: 2;
 }
 
-.impact-title::after {
-    content: '.';
-    color: var(--color-bordeaux);
-}
-
+/* =========================================================================
+   TEXTE
+   ========================================================================= */
 .maintenance-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--text-muted);
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.7;
+    margin-bottom: 2rem;
 }
 
-/* Background Abstract Shapes for Premium Apple-like Feel */
-.bg-shape {
-    position: absolute;
-    filter: blur(100px);
-    z-index: 1;
-    opacity: 0.6;
-    animation: float 20s infinite alternate ease-in-out;
-}
-
-.shape-bordeaux {
-    background: var(--color-bordeaux);
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    top: -200px;
-    left: -200px;
-    opacity: 0.4;
-}
-
-.shape-gold {
-    background: var(--color-gold);
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    bottom: -150px;
-    right: -100px;
-    animation-delay: -5s;
-    opacity: 0.4;
-}
-
-/* Loader Animation inside maintenance */
+/* =========================================================================
+   SPINNER
+   ========================================================================= */
 .loader-spinner {
-    width: 50px;
-    height: 50px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(166, 5, 26, 0.15);
     border-top-color: var(--color-bordeaux);
-    margin: 0 auto;
-    animation: spin 1s ease-in-out infinite;
-}
-
-/* Maintenance button specific hover */
-.maintenance-container .btn.primary-btn:hover {
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin: 0 auto 1rem;
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(50px, 50px) scale(1.1); }
-    100% { transform: translate(-50px, 20px) scale(0.9); }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .shape-bordeaux {
-        display: none;
+    to {
+        transform: rotate(360deg);
     }
 }

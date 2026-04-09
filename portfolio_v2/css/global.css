@@ -393,14 +393,3 @@ footer {
     color: var(--color-white);
 }
 
-.loader-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 800;
-}
-
-.loader-subtitle {
-    color: var(--color-gold);
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-}
