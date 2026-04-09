@@ -19,7 +19,7 @@
     <div id="main-wrapper">
         <header>
             <div class="logo">
-                <a href="./index.html">
+                <a href="./apropos.html">
                     <img src="./img/pdp.webp" alt="Noé Le Jeune">
                 </a>
             </div>
@@ -28,7 +28,21 @@
                 <a href="./projet.html">Projets</a>
                 <a href="./contact.html">Contact</a>
             </nav>
+            <button class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </header>
+
+        <!-- Mobile Nav Backdrop -->
+        <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+        <!-- Mobile Nav Panel -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="./apropos.html" class="active">À propos</a>
+            <a href="./projet.html">Projets</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
 
         <main>
             <!-- HERO SECTION: Split Image & Badges -->
@@ -148,6 +162,40 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="./js/main.js"></script>
+    <script>
+        (function () {
+            const btn = document.getElementById('burger-btn');
+            const nav = document.getElementById('mobile-nav');
+            const backdrop = document.getElementById('mobile-nav-backdrop');
+            if (!btn || !nav) return;
+
+            function openMenu() {
+                btn.classList.add('open');
+                nav.classList.add('open');
+                if (backdrop) backdrop.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-label', 'Fermer le menu');
+            }
+
+            function closeMenu() {
+                btn.classList.remove('open');
+                nav.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('open');
+                document.body.style.overflow = '';
+                btn.setAttribute('aria-label', 'Ouvrir le menu');
+            }
+
+            btn.addEventListener('click', () => {
+                btn.classList.contains('open') ? closeMenu() : openMenu();
+            });
+
+            if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        })();
+    </script>
 </body>
 
 </html>
